@@ -1,0 +1,7 @@
+{
+    "host":"localhost",
+    "name_db":"system360",
+    "dialect":"mysql",
+    "password":"1111",
+    "owner":"root"
+}
