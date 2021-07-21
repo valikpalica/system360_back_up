@@ -25,10 +25,10 @@ const User = sequelize.define('User',{
         type: Sequelize.STRING,
         allowNull: false
     },
-    Mail:{
-        type: Sequelize.STRING,
-        allowNull: false
-    },
+    // Mail:{
+    //     type: Sequelize.STRING,
+    //     allowNull: false
+    // },
     Staff:{
         type: Sequelize.STRING,
         allowNull: false
