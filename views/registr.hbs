@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сторінка реєстрації</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div>
+    <header class="link">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="/auth/autorization" style="font-size: 15px">Вхід</a>
+            <a class="navbar-brand" href="/auth/registration" style="font-size: 15px">Реєстрація</a>
+        </nav>
+    </header>
+</div>
+<div class="icon">
+    <img src="/img/emblam.png" alt="emblam">
+</div>
+
+{{#if error}}
+    <div class="aut">
+        {{message}}
+    </div>
+{{/if}}
+
+
+</div>
+<div class="aut" style="margin-top: -10px">
+    <form action="/auth/registration" method="post">
+        <h5>Реєстрація</h5>
+        <input placeholder="Прізвище"  type="text"  name="surname">
+        <input placeholder="Ім'я"  type="text"  name="name">
+        <input placeholder="По батькові"  type="text"  name="patronime">
+        <div class="input-field col s6">
+            <div style="width: auto; height: auto">
+                <label>Звання користувача</label>
+                <select class="browser-default" name="position">
+                    <option value="" disabled selected>Вибір Статусу користувача</option>
+                    <option value="Лейтенант">Лейтенант</option>
+                    <option value="стр.Лейтенант">стр.Лейтенант</option>
+                    <option value="Капітан">Капітан</option>
+                    <option value="Майор">Майор</option>
+                    <option value="Підполковник">Підполковник</option>
+                    <option value="Полковник">Полковник</option>
+                </select>
+            </div>
+        </div>
+        <input placeholder="Військова частина" type="text" name="staff" id="staff">
+        <label id="staffError" style="color: red"></label>
+        <input type="text" placeholder="Login" name="login">
+        <input id="password" type="password"   name="password" placeholder="Пароль">
+        <label id = 'lenghtPassword' style="color: red"></label>
+        <input id="password1" type="password"   name="repeated_password" placeholder="Пітвердження пароля">
+        <label id = 'errorMessage' style="color: red"></label>
+        <div class="input-field col s6">
+            <div style="width: auto; height: auto">
+                <label>Статус користувача</label>
+                <select class="browser-default" name="status">
+                    <option value="" disabled selected>Вибір Статусу користувача</option>
+                    <option value="0">Офіцер який дає самооцінку</option>
+                    <option value="1">Командир який дає характеристику офіцера</option>
+                </select>
+            </div>
+
+        </div>
+        <button class="btn waves-effect waves-light" type="submit" id="button">Зареєструватись</button>
+    </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="font/registration.js"></script>
+</body>
+</html>

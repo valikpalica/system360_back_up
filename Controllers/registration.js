@@ -1,11 +1,10 @@
-
 const user = require('../DB_functionality/Clasess/User');
 module.exports = (req,res) =>{
    try {
     console.log(req.body);
     user.registration(req.body).then((data)=>{
         console.log(data);
-        res.status(200).json({answer:data});
+        res.redirect('/auth/autorization')
         console.log('registration');
     }).catch(()=>{
         console.log('not registration');

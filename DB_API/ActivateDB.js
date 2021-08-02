@@ -11,8 +11,12 @@ require('./models/ralation_competens');
 require('./models/ralation_quastion');
 require('./models/user')
 
+
+
+
 module.exports = async ()=>{
     sequlize.sync({force:true}).then(()=>{
         console.log("Tables have been created");
+        require('./dataInfo');
     }).catch(err=>console.log(err));
 }
