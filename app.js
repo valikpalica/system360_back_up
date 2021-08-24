@@ -5,6 +5,8 @@ const path = require('path');
 const PORT = process.env.PORT || 8080;
 let bodyParser = require('body-parser')
 const auth = require('./route/autorization');
+const page = require('./route/page');
+const getInfo = require('./route/getInfo');
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const flash = require('express-flash');
@@ -30,6 +32,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cookieParser('system360'));
 app.use('/auth',auth);
+app.use('/page',page);
+app.use('/getInfo',getInfo);
 
 app.listen(PORT,async()=>{
     console.log(`server has been started on port ${PORT}`);

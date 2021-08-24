@@ -14,13 +14,13 @@ class Admins{
             return [];    
         }
     };
-    async getTest(typeAncetaId){
-        return new Promise((res,rej)=>{
+    getTest(typeAncetaId){
+        return new Promise(async (res,rej)=>{
             try {
                 let quastion = await this.getQuastionToAnceta(typeAncetaId);
                 let compatence = await this.getCompatanceToAnceta(typeAncetaId);
-                log(quastion,compatence);
-                if(quastion.length == 0||compatence.length == 0){
+                //log(quastion,compatence);
+                if(quastion.length == 0 || compatence.length == 0){
                     rej('no data');
                 }
                 else{

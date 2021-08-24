@@ -9,7 +9,9 @@ require('./models/quastion')
 require('./models/ralation_anceta_user');
 require('./models/ralation_competens');
 require('./models/ralation_quastion');
-require('./models/user')
+require('./models/user');
+require('./models/Second_quastion');
+require('./models/Main_quastion');
 
 
 

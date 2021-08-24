@@ -11,7 +11,7 @@ const Second_quastion = sequlize.define('Second_quastion',{
         allowNull: false
     },
     name_quastion:{
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false
     }
 });

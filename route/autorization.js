@@ -7,7 +7,7 @@ const checkAuth = require('./checkAuth');
 
 router.post('/registration',registration);
 router.post('/autorization',passport.authenticate('local',{
-    successRedirect: '/auth/main',
+    successRedirect: '/page/main',
     failureRedirect: '/auth/autorization',
 }));
 router.get('/registration',(req,res)=>{

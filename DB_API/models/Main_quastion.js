@@ -19,6 +19,7 @@ const Main_quastion = sequlize.define('Main_Quastion',{
         allowNull: false
     }
 });
+
 Main_quastion.hasMany(Ralation_main_second_quastion,{onDelete:'cascade',foreignKey:'id_main_quastion'});
 Main_quastion.hasMany(assessment_midle_quastion,{onDelete:'cascade',foreignKey:'id_midle_quastion'});
 
