@@ -11,9 +11,6 @@ router.get('/alltypeAnceta',(req,res)=>{
         res.status(400);
     })
 });
-router.get('/getTest',(req,res)=>{
-    
-});
 
 
 module.exports = router;

@@ -118,4 +118,4 @@ const write_ralation_main_second = async (id_main,id_second) =>{
     }
 };
 
-read();
+//read();
