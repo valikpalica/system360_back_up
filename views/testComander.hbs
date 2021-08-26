@@ -16,13 +16,42 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
-    <p>
-        Test for Comander
-    </p>
+    <div class="header">
+    <header class="link">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+             <a class="navbar-brand" href="/auth/autorization" style="font-size: 15px">Вхід</a>
+            <a class="navbar-brand" href="/auth/registration" style="font-size: 15px">Реєстрація</a>
+        </nav>
+    </header>
+</div>
+<div class="icon">
+    <img src="/img/emblam.png" alt="emblam">
+</div>
+
+    <div class="divclass"  style="margin-top: -10px">
+        <input placeholder="Прізвище"  type="text"  name="surname">
+        <input placeholder="Ім'я"  type="text"  name="name">
+        <input placeholder="По батькові"  type="text"  name="patronime">
+        <input placeholder="Посада" type="text" name="position" id="position">
+        <input placeholder="Військова частина" type="text" name="staff" id="staff">
+         <div class="input-field">
+        <div style="width: auto; height: auto">
+            <label>Звання</label>
+            <select class="browser-default" id="zvanije">
+                <option value="" disabled selected>Вибір Звання</option>
+                <option value="мол.Лейтенант">мол.Лейтенант</option>
+                <option value="Лейтенант">Лейтенант</option>
+                <option value="стр.Лейтенант">стр.Лейтенант</option>
+            </select>
+        </div>
+    </div>
+    </div>
+</div>
+
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

@@ -15,7 +15,9 @@ body {
     margin-top: 30px;
     border-radius: 25px;
 }
-
+.divclass input {
+    text-align: center;
+}
 .header {
     text-align: center;
     margin: 2% auto;

@@ -5,7 +5,8 @@ class User{
         return new Promise((res,rej)=>{
             console.log('registration');
             try {
-                let {surname,name,patronime,position,staff,login,password,repeated_password} = obj;
+                let {surname,name,patronime,position,staff,login,password,repeated_password,rank} = obj;
+                console.log(obj);
                 if(password === repeated_password){
                     console.log('password equal');
                     soliPass(password).then( async (solidPass)=>{
@@ -17,6 +18,7 @@ class User{
                             Staff:staff,
                             login:login,
                             password:solidPass,
+                            Rank:rank
                         });
                         console.log(data.dataValues.id_user);
                         res({id:data.dataValues.id_user});

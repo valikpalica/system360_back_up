@@ -25,6 +25,10 @@ const User = sequelize.define('User',{
         type: Sequelize.STRING,
         allowNull: false
     },
+    Rank:{
+        type: Sequelize.STRING,
+        allowNull: false
+    },
     Staff:{
         type: Sequelize.STRING,
         allowNull: false
