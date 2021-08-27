@@ -26,8 +26,11 @@ module.exports = async (req,res)=>{
     let {type_anceta} = req.body;
     let {data,type} = await typeAnceta(type_anceta);
     if(type==1){
-        console.log(data);
-        res.render('testAll.hbs');
+        let {quastion_distructurize,compatence_distructurize} = data;
+        //console.log(data);
+        console.log(quastion_distructurize);
+        console.log(compatence_distructurize);
+        res.render('testAll.hbs',{quastion:quastion_distructurize,compatence:compatence_distructurize});
     }
     else if(type ==2){
         console.log(data);

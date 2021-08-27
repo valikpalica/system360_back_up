@@ -11,9 +11,13 @@ const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const flash = require('express-flash');
 const session = require('express-session');
+const handlebarse = require('hbs');
 const initilizePassport = require('./Passport/index');
 initilizePassport(passport);
 app.set("views engine", "hbs");
+handlebarse.registerHelper("inc",(value)=>{
+    return parseInt(value)+1;
+})
 app.use(express.urlencoded({ extended: false }));
 app.use(flash());
 app.use(session({

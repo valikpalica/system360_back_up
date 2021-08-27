@@ -73,67 +73,79 @@
                     <td colspan="6"><h6>Загальна компетентність</h6></td>
                 </tr>
 
-                <tr>
-                    <td>1</td>
-                    <td>Quastion</td>
+                
+                {{#each quastion}}
+            
+                <tr id={{this.id_quastion}} name='id_quastion'>
+                    <td>{{inc @index}}</td>
+                    <td>{{this.quastion}}</td>
                       <td style="text-align: center;"><p>
                     <label>
-                        <input name="ballcom" value="5" type="checkbox" aria-label="Checkbox for following text input">
+                        <input name="quastion" value="5" type="checkbox" aria-label="Checkbox for following text input">
                         <span></span>
                     </label>
                 </p></td>
                 <td style="text-align: center;"><p>
                     <label>
-                        <input name="ballcom" value="4" type="checkbox" aria-label="Checkbox for following text input">
+                        <input name="quastion" value="4" type="checkbox" aria-label="Checkbox for following text input">
                         <span></span>
                     </label>
                 </p></td>
                  <td style="text-align: center;"><p>
                     <label>
-                        <input name="ballcom" value="3" type="checkbox" aria-label="Checkbox for following text input">
+                        <input name="quastion" value="3" type="checkbox" aria-label="Checkbox for following text input">
                         <span></span>
                     </label>
                 </p></td>
                 <td style="text-align: center;"><p>
                     <label>
-                        <input name="ballcom" value="2" type="checkbox" aria-label="Checkbox for following text input">
+                        <input name="quastion" value="2" type="checkbox" aria-label="Checkbox for following text input">
                         <span></span>
                     </label>
                 </p></td>
                 </tr>
+
+                {{/each}}
 
 
                 <tr>
                     <td colspan="6"><h6>Фахова компетентність</h6></td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Quastion</td>
+
+
+
+                {{#each compatence}}
+
+                <tr id={{this.id_competence}} name='id_compatence'>
+                    <td>{{inc @index}}</td>
+                    <td>{{this.competence}}</td>
                       <td style="text-align: center;"><p>
                     <label>
-                        <input name="ballcom" value="5" type="checkbox" aria-label="Checkbox for following text input">
+                        <input name="compatence" value="5" type="checkbox" aria-label="Checkbox for following text input">
                         <span></span>
                     </label>
                 </p></td>
                 <td style="text-align: center;"><p>
                     <label>
-                        <input name="ballcom" value="4" type="checkbox" aria-label="Checkbox for following text input">
+                        <input name="compatence" value="4" type="checkbox" aria-label="Checkbox for following text input">
                         <span></span>
                     </label>
                 </p></td>
                  <td style="text-align: center;"><p>
                     <label>
-                        <input name="ballcom" value="3" type="checkbox" aria-label="Checkbox for following text input">
+                        <input name="compatence" value="3" type="checkbox" aria-label="Checkbox for following text input">
                         <span></span>
                     </label>
                 </p></td>
                 <td style="text-align: center;"><p>
                     <label>
-                        <input name="ballcom" value="2" type="checkbox" aria-label="Checkbox for following text input">
+                        <input name="compatence" value="2" type="checkbox" aria-label="Checkbox for following text input">
                         <span></span>
                     </label>
                 </p></td>
                 </tr>
+                {{/each}}
+                
 
             </tbody>
         </table>
