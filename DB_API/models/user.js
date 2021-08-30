@@ -33,6 +33,22 @@ const User = sequelize.define('User',{
         type: Sequelize.STRING,
         allowNull: false
     },
+    institute:{
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    facultet:{
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    specialize:{
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    graduation:{
+        type: Sequelize.STRING,
+        allowNull:false,
+    },
     login:{
         type: Sequelize.STRING,
         allowNull: false
@@ -40,7 +56,6 @@ const User = sequelize.define('User',{
     password:{
         type: Sequelize.STRING,
         allowNull: false,
-        default:'1111',
     },
 });
 

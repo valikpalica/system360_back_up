@@ -15,13 +15,10 @@ let index_for_ralation_main_and_second = 0;
 const read = async () =>{
     try {
         //console.log(type_anceta);
-        type_anceta.forEach(item=>{
-            Type_anceta.create({
+        type_anceta.forEach(async (item)=>{
+           await Type_anceta.create({
+                        id_type_anceta: item.id,
                         type_anceta:item.type
-                    }).then(data=>{
-                        //console.log(data);
-                    }).catch(err=>{
-                        throw new Error(err);
                     })
         });
        // console.log(competence);

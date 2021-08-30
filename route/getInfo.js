@@ -1,16 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const Admins = require('../DB_functionality/Clasess/Admins');
+const alltypeAnceta = require('../Controllers/allTypeAnceta');
+const getPersonInfo = require('../Controllers/getPerson');
 
-router.get('/alltypeAnceta',(req,res)=>{
-    Admins.getAllTypeAnceta().then(data=>{
-        console.log(data);
-        res.status(200).json({answer:data});
-    }).catch(err=>{
-        console.error(err);
-        res.status(400);
-    })
-});
+router.get('/alltypeAnceta',alltypeAnceta);
 
+router.post('/getPersonInfo',getPersonInfo);
 
 module.exports = router;

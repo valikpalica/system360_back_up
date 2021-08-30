@@ -2,10 +2,6 @@ const ralataion = require('../Data/ralationType.json');
 const Admins = require('../DB_functionality/Clasess/Admins');
 
 
-
-
-
-
 const typeAnceta = async (id) =>{
     let index = +id;
     if(ralataion.type1.includes(index)){
@@ -34,7 +30,7 @@ module.exports = async (req,res)=>{
     }
     else if(type ==2){
         console.log(data);
-        res.render('testComander.hbs');
+        res.render('testComander.hbs',{data:data});
     }
     else{
         res.redirect('/page/main');

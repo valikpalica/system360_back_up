@@ -5,7 +5,7 @@ class User{
         return new Promise((res,rej)=>{
             console.log('registration');
             try {
-                let {surname,name,patronime,position,staff,login,password,repeated_password,rank} = obj;
+                let {surname,name,patronime,position,staff,institute,facultet,specialize,graduation,login,password,repeated_password,rank} = obj;
                 console.log(obj);
                 if(password === repeated_password){
                     console.log('password equal');
@@ -16,6 +16,10 @@ class User{
                             Patronime:patronime,
                             Position:position,
                             Staff:staff,
+                            institute:institute,
+                            facultet:facultet,
+                            specialize:specialize,
+                            graduation:graduation,
                             login:login,
                             password:solidPass,
                             Rank:rank

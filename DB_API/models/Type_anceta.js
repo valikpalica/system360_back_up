@@ -9,7 +9,6 @@ const Main_quastion = require("./Main_quastion");
 const Type_anceta = sequlize.define('Type_anceta',{
     id_type_anceta:{
         type:Sequelize.INTEGER,
-        autoIncrement: true,
         primaryKey: true,
         allowNull:false,
     },

@@ -4,9 +4,8 @@ const RallationCompatence = require('../../DB_API/models/ralation_competens');
 const Quastion = require('../../DB_API/models/quastion');
 const Competence = require('../../DB_API/models/competence');
 const Main_quastion = require('../../DB_API/models/Main_quastion');
-const Ralation_main_second_quastion = require('../../DB_API/models/Ralation_main_second_quastion');
-const Second_quastions = require('../../DB_API/models/Second_quastion');
 const sequlize = require('../../DB_API/connection');
+const user = require('../../DB_API/models/user');
 
 class Admins{
     async getAllTypeAnceta(){
@@ -110,7 +109,7 @@ class Admins{
                         }
                     }
                     console.log('finish');
-                    console.log(obj);
+                    //console.log(obj);
                     data.push(obj);
                 }
 
@@ -120,6 +119,19 @@ class Admins{
         } catch (error) {
             console.error(error);
             return [];
+        }
+    }
+    async findPerson(obj){
+        try {
+            let {surname,name,patronime} = obj;
+            let data = await user.findAll({where:{
+                Surname:surname,
+                Name:name,
+                Patronime:patronime,
+            }});
+            return data;
+        } catch (error) {
+            console.error(error);
         }
     }
 }

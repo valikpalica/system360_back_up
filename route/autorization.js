@@ -17,10 +17,7 @@ router.get('/registration',(req,res)=>{
 router.get('/autorization',(req,res)=>{
     res.render('auth.hbs');
 })
-router.get('/main',checkAuth,(req,res)=>{
-    console.log(req.user);
-    res.send('Main');
-});
+
 
 
 

@@ -10,22 +10,6 @@ const Info = sequlize.define('Info',{
         primaryKey: true,
         allowNull: false
     },
-    institute:{
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    facultet:{
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    specialize:{
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    vch:{
-        type: Sequelize.STRING,
-        allowNull: false
-    },
     vidpovidnist:{
         type: Sequelize.STRING,
         allowNull: false

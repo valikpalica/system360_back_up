@@ -31,7 +31,6 @@
 <div class="icon">
     <img src="/img/emblam.png" alt="emblam">
 </div>
-
     <div class="divclass"  style="margin-top: -10px">
         <input placeholder="Прізвище"  type="text"  name="surname">
         <input placeholder="Ім'я"  type="text"  name="name">
@@ -50,6 +49,42 @@
         </div>
     </div>
     </div>
+
+<div class="divclass"  style="margin-top: 30px">
+        <table  class="table-bordered" style="align-items: center">
+            <thead>
+               <tr>
+                <th scope="col">№</th>
+                <th scope="col">Перелік компетентностей
+                </th>
+                <th scope="col">Оцінка</th>
+            </tr>
+            </thead>
+               
+               <div class="table-responsive">
+                <tbody class="tbody">
+
+
+                    {{#each data as |main|}}
+                        <tr>
+                        <td colspan="3" id={{main.id_main}}><h6 style="text-align: center;">{{this.main}}</h6></td>
+                        </tr>
+                        {{#each main.array}}
+                            <tr>
+                            <td>{{inc @index}}</td>
+                            <td>{{this.second}}</td>
+                            <td>
+                                <input name="id_main {{main.id_main}}"  type="text" id={{this.id_second}}>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    {{/each}}    
+
+                </tbody>
+               </div>
+        </table>
+    </div>
+
 </div>
 
 
