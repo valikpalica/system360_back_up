@@ -33,27 +33,17 @@
 </div>
 
     <h3 class="header1">Загальні відомості</h3>
-    <div class="divclass"  style="margin-top: -10px">
-        <input placeholder="Прізвище"  type="text"  name="surname">
-        <input placeholder="Ім'я"  type="text"  name="name">
-        <input placeholder="По батькові"  type="text"  name="patronime">
-        <input placeholder="Посада" type="text" name="position" id="position">
-        <input placeholder="Військова частина" type="text" name="staff" id="staff">
-        <div class="input-field">
-        <div style="width: auto; height: auto">
-            <label>Звання</label>
-            <select class="browser-default" id="zvanije">
-                <option value="" disabled selected>Вибір Звання</option>
-                <option value="мол.Лейтенант">мол.Лейтенант</option>
-                <option value="Лейтенант">Лейтенант</option>
-                <option value="стр.Лейтенант">стр.Лейтенант</option>
-            </select>
-        </div>
-    </div>
+    <div class="divclass"  style="margin-top: -10px" id="main">
+        <input placeholder="Прізвище"  type="text"  name="surname" id="surname">
+        <input placeholder="Ім'я"  type="text"  name="name" id="name">
+        <input placeholder="По батькові"  type="text"  name="patronime" id="patronime">
+        
+             <button class="btn waves-effect waves-light" type="submit" id="findPerson">Перевірка наявності людини у системі</button>
+        
     </div>
 
         
-    <div class="divclass"  style="margin-top: 30px">
+    <div class="divclass"  style="margin-top: 30px" hidden="true" id="test">
         <table  class="table-bordered" style="align-items: center">
             <thead>
                <tr>
@@ -149,13 +139,15 @@
 
             </tbody>
         </table>
+
+        
     </div>
 
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+{{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> --}}
 
-<script src="font/findopds.js"></script>
+<script src="/font/findPerson.js"></script>
 </body>
 </html>
 </body>

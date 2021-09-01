@@ -129,6 +129,7 @@ class Admins{
                 Name:name,
                 Patronime:patronime,
             }});
+            console.log(data);
             return data;
         } catch (error) {
             console.error(error);

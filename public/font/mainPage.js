@@ -8,9 +8,6 @@ document.addEventListener("DOMContentLoaded", async ()=>{
 
 
 const create_selector = (array) =>{
-    // let div = document.createElement('div');
-    // div.style.width = 'auto';
-    // div.style.height = 'auto';
     let div  = document.getElementById('type_anceta');
     let label  = document.createElement('label');
     label.textContent = 'Вибіріть тип анкети для оцінювання';

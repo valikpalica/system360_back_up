@@ -6,14 +6,18 @@ body {
 
 .divclass {
     width: 80%;
+    text-align: center;
     padding: 10px 20px;
     margin: 20px auto;
-
     height: auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     background-color: #FFFFFF;
     margin-top: 30px;
     border-radius: 25px;
+}
+
+.divclass button {
+    width: auto;
 }
 .divclass input {
     text-align: center;

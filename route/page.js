@@ -7,7 +7,7 @@ const checkAuth = require('./checkAuth');
 router.get('/main',checkAuth,(req,res)=>{
     res.render('main.hbs');
 });
-router.post('/anceta',typeAnceta);
+router.post('/anceta',checkAuth,typeAnceta);
 
 
 
