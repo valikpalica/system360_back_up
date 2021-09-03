@@ -26,42 +26,12 @@ document.getElementById('findPerson').addEventListener('click',async (event)=>{
     }
 });
 
+
 document.getElementById('save').addEventListener('click',(event)=>{
-    let tr = document.getElementsByTagName('tr');
+    let table = document.getElementsByTagName('table');
+    let input = table[0].getElementsByTagName('input');
     let array = [];
-    for(let i = 0; i<tr.length;i++){
-        if(tr[i].id!=''){
-            let input = tr[i].getElementsByTagName('input');
-            for(let j=0;j<input.length;j++){
-                if(input[j].checked){
-                    //console.log(tr[i].id,input[j].value);
-                    array.push({id:tr[i].id,value:input[j].value});
-                }
-            }
-        }
+    for(let i=0;i<input.length;i++){
+        console.log(input[i].name,input[i].id,input[i].value);
     }
-    Myfetch(obj,array);
 });
-
-
-const Myfetch = async (personInfo,array)=>{
-    console.log(personInfo,array);
-    fetch('/getInfo/save',{
-        method:'POST',
-        headers:{
-            'Content-Type': 'application/json'
-        },
-        body:JSON.stringify({personInfo,array})
-    }).then((data)=>{
-        window.location.href = '/page/main'
-    }).catch(err=>{
-        alert('Error');
-        console.log(err);
-    })
-};
-
-
-
-
-
-

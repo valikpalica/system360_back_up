@@ -36,9 +36,9 @@
 
     <h3 class="header1">Загальні відомості</h3>
      <div class="divclass"  style="margin-top: -10px" id="main">
-        <input placeholder="Прізвище"  type="text"  name="surname">
-        <input placeholder="Ім'я"  type="text"  name="name">
-        <input placeholder="По батькові"  type="text"  name="patronime">
+        <input placeholder="Прізвище"  type="text"  name="surname" id="surname">
+        <input placeholder="Ім'я"  type="text"  name="name" id="name">
+        <input placeholder="По батькові"  type="text"  name="patronime" id="patronime">
         <button class="btn waves-effect waves-light" type="submit" id="findPerson">Перевірка наявності людини у системі</button>
     </div>
 
@@ -66,7 +66,7 @@
                             <td>{{inc @index}}</td>
                             <td>{{this.second}}</td>
                             <td>
-                                <input name="id_main {{main.id_main}}"  type="text" id={{this.id_second}}>
+                                <input name="{{main.id_main}}"  type="text" id={{this.id_second}}>
                             </td>
                         </tr>
                         {{/each}}
@@ -75,6 +75,7 @@
                 </tbody>
                </div>
         </table>
+        <button class="btn waves-effect waves-light" type="save" id="save">Save</button>
     </div>
 
 </div>
@@ -83,7 +84,7 @@
 
 {{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> --}}
 
-<script src="/font/findPerson.js"></script>
+<script src="/font/comanderTest.js"></script>
 </body>
 </html>
 </body>

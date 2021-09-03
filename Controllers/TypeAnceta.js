@@ -26,10 +26,12 @@ module.exports = async (req,res)=>{
         //console.log(data);
         console.log(quastion_distructurize);
         console.log(compatence_distructurize);
+        res.cookie('type_anceta',type_anceta);
         res.render('testAll.hbs',{quastion:quastion_distructurize,compatence:compatence_distructurize});
     }
     else if(type ==2){
         console.log(data);
+        res.cookie('type_anceta',type_anceta);
         res.render('testComander.hbs',{data:data});
     }
     else{
