@@ -14,6 +14,10 @@ router.post('/save',checkAuth,(req,res)=>{
     console.log(req.body);
     res.status(200).json({answer:'ok'});
 });
-
+router.post('/saveComanderTest',(req,res)=>{
+    //console.log(req.user);
+    console.log(req.body);
+    res.status(200).json({answer:'ok'});
+});
 
 module.exports = router;
