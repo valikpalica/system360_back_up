@@ -24,10 +24,6 @@ const Anceta = sequlize.define('Anceta',{
     id_type_anceta:{
         type:Sequelize.INTEGER,
         allowNull:false,
-    },
-    opinion:{
-        type:Sequelize.STRING,
-        allowNull:false,
     }
 });
 

@@ -52,6 +52,17 @@ document.getElementById('save').addEventListener('click',(event)=>{
     //console.log(array);
 });
 
+
+document.getElementById('next').addEventListener('click',(event)=>{
+    console.log('page 1');
+    document.getElementById('test').hidden = true;
+    document.getElementById('test1').hidden = false;
+})
+document.getElementById('finish').addEventListener('click',(event)=>{
+    document.getElementById('test1').hidden = true;
+    document.getElementById('last').hidden = false;
+})
+
 const midlePoint = (array) =>{
     let midle = 0;
     for(let i=0;i<array.length;i++){

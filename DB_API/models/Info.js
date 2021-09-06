@@ -22,7 +22,11 @@ const Info = sequlize.define('Info',{
         type: Sequelize.INTEGER,
         allowNull: false
     },
-    year_nedolik:{
+    year_point:{
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    nedolik:{
         type: Sequelize.STRING,
         allowNull: false
     },
@@ -42,6 +46,10 @@ const Info = sequlize.define('Info',{
         type: Sequelize.STRING,
         allowNull: false
     },
+    opinion:{
+        type:Sequelize.STRING,
+        allowNull:false,
+    }
 });
 
 Info.hasMany(assessment_midle_quastion,{ondeDelete:'cascade',foreignKey:'id_info'});
