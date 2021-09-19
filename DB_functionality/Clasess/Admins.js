@@ -6,6 +6,9 @@ const Competence = require('../../DB_API/models/competence');
 const Main_quastion = require('../../DB_API/models/Main_quastion');
 const sequlize = require('../../DB_API/connection');
 const user = require('../../DB_API/models/user');
+const Anceta = require('../../DB_API/models/Anceta');
+const Assessment_quastion = require('../../DB_API/models/assessment_quastion');
+const Assessment_competence = require('../../DB_API/models/assessment_competence');
 
 class Admins{
     async getAllTypeAnceta(){
@@ -135,5 +138,44 @@ class Admins{
             console.error(error);
         }
     }
+    async saveComanderTest(obj){
+        try {
+            
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    async saveAllStaffTest(obj){
+        try {
+            let {who,whom,array_quastion,array_competence,type_anceta} = obj;
+            Anceta.create({
+                id_user_who_assessment:who,
+                id_user_whom_assessment:whom,
+                id_type_anceta:type_anceta
+            }).then(data=>{
+                //console.log(data);
+                array_quastion.forEach(item=>{
+                    Assessment_quastion.create({
+                        id_quastion:item.id,
+                        point_quastion:item.value,
+                        id_anceta:data.id_anceta
+                    });
+                })
+                array_competence.forEach(item=>{
+                    Assessment_competence.create({
+                        id_competence:item.id,
+                        point_competence:item.value,
+                        id_anceta:data.id_anceta,
+                    });
+                });
+            }).catch(err=>{
+                console.error(err);
+            })
+
+
+        } catch (error) {
+            console.error(error);
+        }
+    };
 }
 module.exports = new Admins;

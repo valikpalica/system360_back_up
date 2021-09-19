@@ -1,3 +1,14 @@
+
+document.getElementById('next').addEventListener('click',(event)=>{
+    console.log('page 1');
+    document.getElementById('test').hidden = true;
+    document.getElementById('test1').hidden = false;
+})
+document.getElementById('finish').addEventListener('click',(event)=>{
+    document.getElementById('test1').hidden = true;
+    document.getElementById('last').hidden = false;
+})
+
 let obj = {};
 document.getElementById('findPerson').addEventListener('click',async (event)=>{
     console.log('findPerson');
@@ -48,20 +59,24 @@ document.getElementById('save').addEventListener('click',(event)=>{
             array.push(obj);
         }
     }
-    Myfetch(obj,array);
-    //console.log(array);
+    let info = getInfo();
+    //console.log(info);
+    Myfetch(obj,array,info);
 });
 
-
-document.getElementById('next').addEventListener('click',(event)=>{
-    console.log('page 1');
-    document.getElementById('test').hidden = true;
-    document.getElementById('test1').hidden = false;
-})
-document.getElementById('finish').addEventListener('click',(event)=>{
-    document.getElementById('test1').hidden = true;
-    document.getElementById('last').hidden = false;
-})
+const getInfo = () =>{
+    let obj = {};
+    let info_div  = document.getElementById('test1');
+    let inputs = info_div.getElementsByTagName('input');
+    //console.log(inputs);
+    let opinion = document.getElementById('opinion').value;
+    obj[`opinion`] = opinion;
+    obj[`vidpovidnist`] = document.getElementById('vidpovidnist').value;
+    for (let index = 0; index < inputs.length; index++) {
+        obj[`${inputs[index].id}`] = inputs[index].value;    
+    }
+    return obj;
+}
 
 const midlePoint = (array) =>{
     let midle = 0;
@@ -71,20 +86,25 @@ const midlePoint = (array) =>{
     return Math.round(midle/array.length);
 }
 
-const Myfetch = async(personInfo,array) =>{
+const Myfetch = async(personInfo,array,info) =>{
     console.log(personInfo,array);
+    let type_anceta = getCookie();
     fetch('/getInfo/saveComanderTest',{
         method:'POST',
         headers:{
             'Content-Type': 'application/json'
         },
-        body:JSON.stringify({personInfo,array})
+        body:JSON.stringify({personInfo,array,info,type_anceta})
     }).then(data=>{
-        alert('OK');
+        //alert('OK');
         //console.log(data);
-        //window.location.href = '/page/main'
+        window.location.href = '/page/main'
     }).catch(err=>{
         alert('Error')
         console.error(err);
     })
+};
+const getCookie = () =>{
+    let matches = document.cookie.match(/type_anceta=([1-5])/);
+    return matches[1];
 };

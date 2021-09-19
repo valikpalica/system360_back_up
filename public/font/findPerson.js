@@ -13,7 +13,6 @@ document.getElementById('findPerson').addEventListener('click',async (event)=>{
         body:JSON.stringify({surname,name,patronime})
     });
     let json = await data.json();
-    //console.log(json.answer);
     if(json.answer.length!= 0){
         obj = json.answer[0];
         let test = document.getElementById('test');
@@ -27,31 +26,47 @@ document.getElementById('findPerson').addEventListener('click',async (event)=>{
 });
 
 document.getElementById('save').addEventListener('click',(event)=>{
-    let tr = document.getElementsByTagName('tr');
-    let array = [];
-    for(let i = 0; i<tr.length;i++){
-        if(tr[i].id!=''){
-            let input = tr[i].getElementsByTagName('input');
-            for(let j=0;j<input.length;j++){
-                if(input[j].checked){
-                    //console.log(tr[i].id,input[j].value);
-                    array.push({id:tr[i].id,value:input[j].value});
-                }
-            }
-        }
-    }
-    Myfetch(obj,array);
+    let {array_quastion,array_compatence} = getValue();
+    Myfetch(obj,array_quastion,array_compatence);
 });
 
 
-const Myfetch = async (personInfo,array)=>{
-    console.log(personInfo,array);
+const getValue = () =>{
+    let tr = document.getElementsByTagName('tr');
+    let array_quastion = [];
+    let array_compatence = [];
+    for(let i = 0; i<tr.length;i++){
+            if(tr[i].id!=''){
+                let input = tr[i].getElementsByTagName('input');
+                for(let j=0;j<input.length;j++){
+                    if(input[j].checked){
+                        if(input[j].className=='quastion'){
+                            array_quastion.push({id:tr[i].id,value:input[j].value})
+                        }
+                        else if(input[j].className=='compatence'){
+                            array_compatence.push({id:tr[i].id,value:input[j].value})
+                        }
+                        else{
+                            console.log('not class name')
+                        }
+                    }
+                }
+            }
+        }
+    return {array_quastion,array_compatence};
+}
+
+
+
+const Myfetch = async (personInfo,array_quastion,array_compatence)=>{
+    let type_anceta = getCookie();
+    //console.log(personInfo,array_quastion,array_compatence,type_anceta);
     fetch('/getInfo/save',{
         method:'POST',
         headers:{
             'Content-Type': 'application/json'
         },
-        body:JSON.stringify({personInfo,array})
+        body:JSON.stringify({personInfo,array_quastion,array_compatence,type_anceta})
     }).then((data)=>{
         window.location.href = '/page/main'
     }).catch(err=>{
@@ -60,8 +75,7 @@ const Myfetch = async (personInfo,array)=>{
     })
 };
 
-
-
-
-
-
+const getCookie = () =>{
+    let matches = document.cookie.match(/type_anceta=([1-5])/);
+    return matches[1];
+};

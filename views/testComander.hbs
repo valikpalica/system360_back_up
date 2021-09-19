@@ -59,8 +59,6 @@
                
                <div class="table-responsive">
                 <tbody class="tbody">
-
-
                     {{#each data as |main|}}
                         <tr>
                         <td colspan="3" id={{main.id_main}}><h6 style="text-align: center;">{{this.main}}</h6></td>
@@ -87,7 +85,7 @@
 <div class="divclass"  style="margin-top: 30px" hidden="true" id="test1">
      <div class="input-field">
         <div style="width: auto; height: auto">
-            <label>Звання</label>
+            <label>Відповідність займаній посаді</label>
             <select class="browser-default" id="vidpovidnist">
                 <option value="Відповідає">Відповідає</option>
                 <option value="Не відповідає">Не відповідає</option>
@@ -95,36 +93,28 @@
         </div>
     </div>
     <div class="input-field">
-        <input id="stagnenja" type="text" name="response">
-        <label for="stagnenja">Кількість стягнень</label>
+        <input id="stagnenja" type="text" name="response" placeholder="Кількість стягнень">
     </div>
     <div class="input-field">
-        <input id="zaohochenja" type="text" name="response">
-        <label for="zaohochenja">Кількість заохочень</label>
+        <input id="zaohochenja" type="text" name="response" placeholder="Кількість заохочень">
     </div>
     <div class="input-field">
-        <input id="year_point" type="text" name="response">
-        <label for="year_point">Оцінка службової діяльності</label>
+        <input id="year_point" type="text" name="response" placeholder="Оцінка службової діяльності">
     </div>
     <div class="input-field">
-        <input id="nedolik" type="text" name="response">
-        <label for="nedolik">Характерні недоліки службової діяльності</label>
+        <input id="nedolik" type="text" name="response" placeholder="Характерні недоліки службової діяльності">
     </div>
     <div class="input-field">
-        <input id="pobaganja" type="text" name="response">
-        <label for="pobaganja">Побажання щодо підвищення якості підготовки випускників</label>
+        <input id="pobaganja" type="text" name="response" placeholder="Побажання щодо підвищення якості підготовки випускників">
     </div>
     <div class="input-field">
-        <input id="comander" type="text" name="response">
-        <label for="comander">Безпосередній командир</label>
+        <input id="comander" type="text" name="response" placeholder="Безпосередній командир">
     </div>
     <div class="input-field">
-        <input id="comander_vch" type="text" name="response">
-        <label for="comander_vch">Командир військової частини</label>
+        <input id="comander_vch" type="text" name="response" placeholder="Командир військової частини">
     </div>
     <div class="input-field">
-        <input id="comander_mpz" type="text" name="response">
-        <label for="comander_mpz">Заступник з МПЗ</label>
+        <input id="comander_mpz" type="text" name="response" placeholder="Заступник з МПЗ">
     </div>
     <button class="btn waves-effect waves-light" type="save" id="finish" style="margin-top: 20px;">Next</button>
 </div>
