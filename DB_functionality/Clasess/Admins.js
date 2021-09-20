@@ -144,6 +144,7 @@ class Admins{
     }
     async saveComanderTest(obj){
         try {
+            let {who,whom,type_anceta,vidpovidnist,stagnenja,zaohochenja,year_point,nedolik,pobaganja,comander,comander_vch,comander_mpz,opinion,array} = obj;
             Anceta.create({
                 id_user_who_assessment:who,
                 id_user_whom_assessment:whom,
@@ -151,25 +152,31 @@ class Admins{
             }).then(data=>{
                 //console.log(data);
                 Info.create({
-                    
+                    id_info:data.id_anceta, 
+                    vidpovidnist:vidpovidnist,
+                    stagnenja:stagnenja,
+                    zaohochenja:zaohochenja,
+                    year_point:year_point,
+                    nedolik:nedolik,
+                    pobaganja:pobaganja,
+                    comander:comander,
+                    comander_vch:comander_vch,
+                    comander_mpz:comander_mpz,
+                    opinion:opinion
                 }).then(data=>{
                     // console.log(data);
-                    assessment_main_quastion.create({
-
-                    }).then(data=>{
-                        //console.log(data);
-                    }).catch(err=>{
-                        throw new Error(err);
-                    })
-
-                    assessment_second_quastion.create({
-                        
-                    }).then(data=>{
-                        // console.log(data);
-                    }).catch(err=>{
-                        throw new Error(err);
+                    array.forEach(item=>{
+                        assessment_main_quastion.create({
+                            
+                        }).then(data=>{
+                            // console.log(data);
+                        }).catch(err=> new Error(err));
+                        item.array.forEach(second_item=>{
+                            assessment_second_quastion.create({
+                                
+                            }).then(data=>console.log(data)).catch(err=> new Error(err));
+                        })
                     });
-
                 }).catch(err=>{
                     throw new Error(err);
                 });

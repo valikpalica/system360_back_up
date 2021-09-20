@@ -6,7 +6,6 @@ const assessment_second_quastion = require('./assessment_second_quastion');
 const Info = sequlize.define('Info',{
     id_info:{
         type: Sequelize.INTEGER,
-        autoIncrement: true,
         primaryKey: true,
         allowNull: false
     },
