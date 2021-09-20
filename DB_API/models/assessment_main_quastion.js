@@ -1,7 +1,7 @@
 const {Sequelize} = require('sequelize');
 const sequlize = require('../connection');
 
-const assessment_midle_quastion = sequlize.define('Assessment_main_quastion',{
+const assessment_main_quastion = sequlize.define('Assessment_main_quastion',{
     id_assessment:{
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -22,4 +22,4 @@ const assessment_midle_quastion = sequlize.define('Assessment_main_quastion',{
     }
 });
 
-module.exports = assessment_midle_quastion;
+module.exports = assessment_main_quastion;

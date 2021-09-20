@@ -9,6 +9,10 @@ const user = require('../../DB_API/models/user');
 const Anceta = require('../../DB_API/models/Anceta');
 const Assessment_quastion = require('../../DB_API/models/assessment_quastion');
 const Assessment_competence = require('../../DB_API/models/assessment_competence');
+const Info = require('../../DB_API/models/Info');
+const assessment_main_quastion = require('../../DB_API/models/assessment_main_quastion');
+const assessment_second_quastion = require('../../DB_API/models/assessment_second_quastion');
+
 
 class Admins{
     async getAllTypeAnceta(){
@@ -140,7 +144,38 @@ class Admins{
     }
     async saveComanderTest(obj){
         try {
-            
+            Anceta.create({
+                id_user_who_assessment:who,
+                id_user_whom_assessment:whom,
+                id_type_anceta:type_anceta
+            }).then(data=>{
+                //console.log(data);
+                Info.create({
+                    
+                }).then(data=>{
+                    // console.log(data);
+                    assessment_main_quastion.create({
+
+                    }).then(data=>{
+                        //console.log(data);
+                    }).catch(err=>{
+                        throw new Error(err);
+                    })
+
+                    assessment_second_quastion.create({
+                        
+                    }).then(data=>{
+                        // console.log(data);
+                    }).catch(err=>{
+                        throw new Error(err);
+                    });
+
+                }).catch(err=>{
+                    throw new Error(err);
+                });
+            }).catch(err=>{
+                throw new Error(err);
+            });
         } catch (error) {
             console.error(error);
         }
