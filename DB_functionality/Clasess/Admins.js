@@ -163,19 +163,21 @@ class Admins{
                     comander_vch:comander_vch,
                     comander_mpz:comander_mpz,
                     opinion:opinion
-                }).then(data=>{
+                }).then(async (data)=>{
                     // console.log(data);
                     array.forEach(item=>{
-                        assessment_main_quastion.create({
-                            
-                        }).then(data=>{
-                            // console.log(data);
-                        }).catch(err=> new Error(err));
-                        item.array.forEach(second_item=>{
+                        await assessment_main_quastion.create({
+                            id_info:data.id_info,
+                            id_midle_quastion:parseInt(item.main),
+                            midle_point:item.midle,
+                        }).catch(err=>{new Error(err)});
+                        item.array.forEach(second_item =>{
                             assessment_second_quastion.create({
-                                
-                            }).then(data=>console.log(data)).catch(err=> new Error(err));
-                        })
+                                id_info:data.id_info,
+                                id_second_quastion: second_item.id,
+                                point:second_item.value
+                            }).catch(err=>new Error(err));
+                        });
                     });
                 }).catch(err=>{
                     throw new Error(err);
