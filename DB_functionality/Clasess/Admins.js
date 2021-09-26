@@ -12,6 +12,7 @@ const Assessment_competence = require('../../DB_API/models/assessment_competence
 const Info = require('../../DB_API/models/Info');
 const assessment_main_quastion = require('../../DB_API/models/assessment_main_quastion');
 const assessment_second_quastion = require('../../DB_API/models/assessment_second_quastion');
+const Ralation_Anceta_User = require('../../DB_API/models/ralation_anceta_user');
 
 
 class Admins{
@@ -142,8 +143,20 @@ class Admins{
             console.error(error);
         }
     }
+    async getSpecialize(){
+        try {
+            let data = await user.findAll({
+                attributes: ['specialize'],
+                distinct: true
+            });
+            return data;
+        } catch (error) {
+            console.error(error);
+        }
+    }
     async saveComanderTest(obj){
         try {
+            
             let {who,whom,type_anceta,vidpovidnist,stagnenja,zaohochenja,year_point,nedolik,pobaganja,comander,comander_vch,comander_mpz,opinion,array} = obj;
             Anceta.create({
                 id_user_who_assessment:who,
@@ -151,6 +164,14 @@ class Admins{
                 id_type_anceta:type_anceta
             }).then(data=>{
                 //console.log(data);
+                Ralation_Anceta_User.create({
+                    id_user:whom,
+                    id_anceta:data.id_anceta
+                }).then(data=>{
+                    console.log(data);
+                }).catch(err=>{
+                    throw new Error(err);
+                });
                 Info.create({
                     id_info:data.id_anceta, 
                     vidpovidnist:vidpovidnist,
@@ -165,7 +186,7 @@ class Admins{
                     opinion:opinion
                 }).then(async (data)=>{
                     // console.log(data);
-                    array.forEach(item=>{
+                    array.forEach(async (item)=>{
                         await assessment_main_quastion.create({
                             id_info:data.id_info,
                             id_midle_quastion:parseInt(item.main),
@@ -198,6 +219,14 @@ class Admins{
                 id_type_anceta:type_anceta
             }).then(data=>{
                 //console.log(data);
+                Ralation_Anceta_User.create({
+                    id_user:whom,
+                    id_anceta:data.id_anceta
+                }).then(data=>{
+                    console.log(data);
+                }).catch(err=>{
+                    throw new Error(err);
+                });
                 array_quastion.forEach(item=>{
                     Assessment_quastion.create({
                         id_quastion:item.id,

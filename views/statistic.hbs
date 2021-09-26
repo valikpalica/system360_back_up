@@ -18,20 +18,28 @@
         </nav>
     </header>
 </div>
-<div class="icon">
-    <img src="/img/emblam.png" alt="emblam">
-</div>
-<form action="/page/anceta" method="POST">
-    <div class="aut">
-   <div style="width: auto; height: auto" id='type_anceta'>   
+
+<div class="divclass">
+    <h3 class="header1">Пошук корисності</h3>
+    <div class="inline" style="width: 100%">
+        <p class="range-field" style="width: 100%">
+            <input type="range" id="slider" />
+            <label for="slider">Виберіть рік випуску</label>
+        </p>
     </div>
-    <button class="btn waves-effect waves-light" type="submit" id="button">Відкрити</button>
+    <div class="input-field col s6">
+        <div style="width: auto; height: auto">
+            <label>За спеціальністю</label>
+            <select class="browser-default" id="specialize">
+               
+            </select>
+        </div>
+    </div>
+    
+   
 </div>
-</form>
 
-
-{{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> --}}
-<script src="/font/mainPage.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="font/statistic.js"></script>
 </body>
 </html>
