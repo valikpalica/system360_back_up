@@ -14,6 +14,6 @@ router.post('/getPersonInfo',checkAuth,getPersonInfo);
 
 router.post('/save',checkAuth,saveAllTest);
 router.post('/saveComanderTest',checkAuth,saveComanderTest);
-router.get('/specialize',checkAuth,);
+router.get('/specialize',checkAuth,getSpecialize);
 
 module.exports = router;
