@@ -154,6 +154,20 @@ class Admins{
             console.error(error);
         }
     }
+    async getAllInformation(){
+        try {
+            
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    async getPersonalInformation(id_person){
+        try {
+            
+        } catch (error) {
+            console.error(error);
+        }
+    }
     async saveComanderTest(obj){
         try {
             
