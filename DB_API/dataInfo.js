@@ -71,18 +71,20 @@ const read = async () =>{
                });
            })
        })
-       comanderTest.data.forEach(async (item,index)=>{
-            try {
-            let data  = await Main_Quastion.create({
+
+       for(let i=0;i<comanderTest.data.length;i++){
+        try {
+            let j = i;
+            await Main_Quastion.create({
                 id_type_anceta:comanderTest.type,
-                name_main_quastion:item.main
+                name_main_quastion:comanderTest.data[i].main
             });
-            await write_second_quastion(item.second,++index);
-            
-            } catch (error) {
-                throw new Error(error);
-            }
-       });
+            console.log(comanderTest.data[i].second);
+            await write_second_quastion(comanderTest.data[i].second,++j);
+        } catch (err) {
+            throw new Error(err);
+        }
+       };
     } catch (error) {
         console.error(error);
         return false;
@@ -90,23 +92,40 @@ const read = async () =>{
 }
 
 const write_second_quastion  = async (array,main_index) =>{
-    array.forEach(async (item)=>{
-        try {
-            let data  = await Second_quastion.create({
-                name_quastion:item
+
+    try {
+        for(let i=0;i<array.length;i++){
+            let j = i;
+            await Second_quastion.create({
+                            name_quastion:array[i]
             });
             await write_ralation_main_second(main_index,++index_for_ralation_main_and_second);
-        } catch (error) {
-            throw new Error(error);
         }
-    });
+    } catch (error) {
+        throw new Error(error);
+    }
+    // array.forEach(async (item)=>{
+    //     try {
+    //         Second_quastion.create({
+    //             name_quastion:item
+    //         }).then(data=>{
+    //             // console.log(data);
+    //             write_ralation_main_second(main_index,++index_for_ralation_main_and_second).then(data=>{
+    //                 // console.log(data);
+    //             }).catch(err=>{
+    //                 throw new Error(err);
+    //             });
+    //         });
+    //     } catch (error) {
+    //         throw new Error(error);
+    //     }
+    // });
 };
 
 const write_ralation_main_second = async (id_main,id_second) =>{
     //console.log(id_main,id_second);
-
     try {
-        let data = await Ralation_main_second_quastion.create({
+        await Ralation_main_second_quastion.create({
             id_main_quastion:id_main,
             id_second_quastion:id_second,
         });
