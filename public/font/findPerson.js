@@ -60,20 +60,40 @@ const getValue = () =>{
 
 const Myfetch = async (personInfo,array_quastion,array_compatence)=>{
     let type_anceta = getCookie();
-    //console.log(personInfo,array_quastion,array_compatence,type_anceta);
-    fetch('/getInfo/save',{
+    console.log(personInfo,array_quastion,array_compatence,type_anceta);
+    let res = test(array_quastion,array_compatence);
+    if(res){
+        fetch('/getInfo/save',{
         method:'POST',
         headers:{
             'Content-Type': 'application/json'
         },
         body:JSON.stringify({personInfo,array_quastion,array_compatence,type_anceta})
-    }).then((data)=>{
-        window.location.href = '/page/main'
-    }).catch(err=>{
+        }).then((data)=>{
+            alert('Succsesful');
+            window.location.href = '/page/main'
+        }).catch(err=>{
         alert('Error');
         console.log(err);
     })
+    }
+    else{
+        alert('not correct data');
+    }
 };
+
+
+
+const test = (array1,array2) =>{
+    let size = array1.length + array2.length;
+    let count_element = document.getElementsByTagName('tr').length-3;
+    if(size == count_element){
+        return true
+    }
+    else{
+        return false;
+    }
+}
 
 const getCookie = () =>{
     let matches = document.cookie.match(/type_anceta=([1-5])/);

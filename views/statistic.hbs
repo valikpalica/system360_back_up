@@ -23,21 +23,43 @@
     <h3 class="header1">Пошук корисності</h3>
     <div class="inline" style="width: 100%">
         <p class="range-field" style="width: 100%">
-            <input type="range" id="slider" />
-            <label for="slider">Виберіть рік випуску</label>
+            <input type="number" id="slider"/>
         </p>
+        <br>
+        <label for="slider">Виберіть дату випуску</label>
     </div>
-    <div class="input-field col s6">
+    {{!-- <div class="input-field col s6">
         <div style="width: auto; height: auto">
             <label>За спеціальністю</label>
             <select class="browser-default" id="specialize">
-               
             </select>
         </div>
+    </div> --}}
+     <div style="margin-bottom: 10px;">
+            <button class="btn waves-effect waves-light" id="find" style="width: 30%;">
+                Пошук
+            </button>
     </div>
-    
    
 </div>
+
+<div class="divclass"  style="margin-top: 30px" hidden = 'true' id="statistic">
+        <table  class="table-bordered" style="align-items: center">
+            <thead>
+               <tr>
+                
+                <th scope="col">Питання
+                </th>
+                <th scope="col">Оцінка</th>
+            </tr>
+            </thead>
+               <div class="table-responsive" id="res">
+                   <tbody id="tbody">
+                    
+                   </tbody>
+               </div>
+        </table>    
+    </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="/font/statistic.js"></script>

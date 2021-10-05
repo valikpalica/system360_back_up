@@ -15,6 +15,8 @@ const assessment_second_quastion = require('../../DB_API/models/assessment_secon
 const Ralation_Anceta_User = require('../../DB_API/models/ralation_anceta_user');
 
 
+
+
 class Admins{
     async getAllTypeAnceta(){
         try {
@@ -154,16 +156,13 @@ class Admins{
             console.error(error);
         }
     }
-    async getAllInformation(){
+    async getAllInformation({year}){
         try {
             
-        } catch (error) {
-            console.error(error);
-        }
-    }
-    async getPersonalInformation(id_person){
-        try {
+            let quary_quastions = await sequlize.query(`select (SUM(assessment_quastions.point_quastion)/COUNT(assessment_quastions.id_quastion)) as division, SUM(assessment_quastions.point_quastion) as sum, COUNT(assessment_quastions.id_quastion) as count, quastions.quastion from assessment_quastions inner join quastions on quastions.id_quastion = assessment_quastions.id_quastion inner join anceta on anceta.id_anceta = assessment_quastions.id_anceta inner join ralation_anceta_users on anceta.id_anceta = ralation_anceta_users.id_anceta inner join users on users.id_user = ralation_anceta_users.id_user where users.graduation = "${year}" group by (assessment_quastions.id_quastion)`);
+            let quary_competence = await sequlize.query(`select (SUM(assessment_competences.point_competence)/COUNT(assessment_competences.id_competence)) as division, SUM(assessment_competences.point_competence) as sum, COUNT(assessment_competences.id_competence) as count, competences.competence from assessment_competences inner join competences on competences.id_competence = assessment_competences.id_competence inner join anceta on assessment_competences.id_anceta = anceta.id_anceta inner join ralation_anceta_users on anceta.id_anceta = ralation_anceta_users.id_anceta inner join users on users.id_user = ralation_anceta_users.id_user where users.graduation = "${year}"  group by (assessment_competences.id_competence);`);
             
+            return {competnce: quary_competence[0],quastion:quary_quastions[0]};
         } catch (error) {
             console.error(error);
         }

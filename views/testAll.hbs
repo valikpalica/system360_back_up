@@ -47,52 +47,42 @@
         <table  class="table-bordered" style="align-items: center">
             <thead>
                <tr>
-                <th scope="col">№</th>
                 <th scope="col">Питання
                 </th>
-                <th scope="col">5</th>
-                <th scope="col">4</th>
-                <th scope="col">3</th>
-                <th scope="col">2</th>
+                <th scope="col">Оцінювання</th>
             </tr>
             </thead>
                
                <div class="table-responsive">
                    <tbody class="tbody">
                 <tr>
-                    <td colspan="6"><h6>Загальна компетентність</h6></td>
+                    <td colspan="3"><h6>Загальна компетентність</h6></td>
                 </tr>
 
                 
                 {{#each quastion}}
             
                 <tr id={{this.id_quastion}} name='id_quastion'>
-                    <td>{{inc @index}}</td>
+                    {{!-- <td>{{inc @index}}</td> --}}
                     <td>{{this.quastion}}</td>
-                      <td style="text-align: center;"><p>
-                    <label>
-                        <input class="quastion" value="5" type="checkbox" aria-label="Checkbox for following text input">
-                        <span></span>
-                    </label>
-                </p></td>
-                <td style="text-align: center;"><p>
-                    <label>
-                        <input class="quastion" value="4" type="checkbox" aria-label="Checkbox for following text input">
-                        <span></span>
-                    </label>
-                </p></td>
-                 <td style="text-align: center;"><p>
-                    <label>
-                        <input class="quastion" value="3" type="checkbox" aria-label="Checkbox for following text input">
-                        <span></span>
-                    </label>
-                </p></td>
-                <td style="text-align: center;"><p>
-                    <label>
-                        <input class="quastion" value="2" type="checkbox" aria-label="Checkbox for following text input">
-                        <span></span>
-                    </label>
-                </p></td>
+                      <td style="text-align: center;" width="30%">
+                        <label>
+                            <input class="quastion" name="group_quastion_{{@index}}" type="radio"  value="5"/>
+                            <span>5</span>
+                        </label>
+                        <label>
+                            <input class="quastion" name="group_quastion_{{@index}}" type="radio" value="4" />
+                            <span>4</span>
+                        </label>
+                        <label>
+                            <input class="quastion" name="group_quastion_{{@index}}" type="radio" value="3" />
+                            <span>3</span>
+                        </label>
+                        <label>
+                            <input class="quastion" name="group_quastion_{{@index}}" type="radio" value="2" />
+                            <span>2</span>
+                        </label>
+                    </td>
                 </tr>
 
                 {{/each}}
@@ -107,39 +97,31 @@
                 {{#each compatence}}
 
                 <tr id={{this.id_competence}} name='id_compatence'>
-                    <td>{{inc @index}}</td>
+                    {{!-- <td>{{inc @index}}</td> --}}
                     <td>{{this.competence}}</td>
-                      <td style="text-align: center;"><p>
-                    <label>
-                        <input class="compatence" value="5" type="checkbox" aria-label="Checkbox for following text input">
-                        <span></span>
-                    </label>
-                </p></td>
-                <td style="text-align: center;"><p>
-                    <label>
-                        <input class="compatence" value="4" type="checkbox" aria-label="Checkbox for following text input">
-                        <span></span>
-                    </label>
-                </p></td>
-                 <td style="text-align: center;"><p>
-                    <label>
-                        <input class="compatence" value="3" type="checkbox" aria-label="Checkbox for following text input">
-                        <span></span>
-                    </label>
-                </p></td>
-                <td style="text-align: center;"><p>
-                    <label>
-                        <input class="compatence" value="2" type="checkbox" aria-label="Checkbox for following text input">
-                        <span></span>
-                    </label>
-                </p></td>
+                    <td style="text-align: center;" width="30%">
+                        <label>
+                            <input class="compatence" name="group_compatence_{{@index}}" type="radio"  value="5"/>
+                            <span>5</span>
+                        </label>
+                        <label>
+                            <input class="compatence" name="group_compatence_{{@index}}" type="radio" value="4" />
+                            <span>4</span>
+                        </label>
+                        <label>
+                            <input class="compatence" name="group_compatence_{{@index}}" type="radio" value="3" />
+                            <span>3</span>
+                        </label>
+                        <label>
+                            <input class="compatence" name="group_compatence_{{@index}}" type="radio" value="2" />
+                            <span>2</span>
+                        </label>
+                    </td>
                 </tr>
                 {{/each}}
-                
-
             </tbody>
         </table>
-    <button class="btn waves-effect waves-light" type="save" style="margin-top: 20px;" id="save">Save</button>
+    <button class="btn waves-effect waves-light" type="save" style="margin-top: 20px;" id="save">Зберегти</button>
         
     </div>
 
