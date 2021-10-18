@@ -17,8 +17,8 @@ require('./models/Main_quastion');
 
 
 module.exports = async ()=>{
-    sequlize.sync({force:true}).then(()=>{
+    sequlize.sync(/*{force:true}*/).then(()=>{
         console.log("Tables have been created");
-        require('./dataInfo');
+        //require('./dataInfo');
     }).catch(err=>console.log(err));
 }

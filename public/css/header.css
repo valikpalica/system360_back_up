@@ -1,0 +1,19 @@
+nav {
+    background-color: #424242;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+nav a {
+    margin-left: 10px;
+    font-family:  'Open Sans', sans-serif;
+    padding: 5px 10px;
+    font-size: 15px;
+    color: #bdbdbd;
+}
+
+nav a:hover{
+    color: #eeeeee;
+}
+

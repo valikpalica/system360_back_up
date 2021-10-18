@@ -4,20 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Сторінка реєстрації</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/model.css">
+    <link rel="stylesheet" href="/css/header.css">
 </head>
 <body>
 
-<div>
-    <header class="link">
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="/auth/autorization" style="font-size: 15px">Вхід</a>
-            <a class="navbar-brand" href="/auth/registration" style="font-size: 15px">Реєстрація</a>
+            <a class="navbar-brand" href="/auth/autorization">Вхід</a>
+            <a class="navbar-brand" href="/auth/registration">Реєстрація</a>
         </nav>
-    </header>
-</div>
+  
 <div class="icon">
     <img src="/img/emblam.png" alt="emblam">
 </div>
@@ -30,6 +28,33 @@
 
 
 </div>
+
+
+
+<div id="myModal" class="my_modal">
+    <div  class="my_content">
+      <h4>Помилки виявленні при реєстрації</h4>
+      <div id="list_error" class="list_errr">
+          <ul>
+              <li>1 Error</li>
+              <li>2 Error</li>
+              <li>3 Error</li>
+              <li>1 Error</li>
+              <li>2 Error</li>
+              <li>3 Error</li>
+              <li>1 Error</li>
+              <li>2 Error</li>
+              <li>3 Error</li>
+          </ul>
+      </div>
+      <div class="foot_modal">
+          <a href="#!" id="close_modal">Agree</a>
+      </div>
+    </div>
+</div>
+
+
+
 <div class="aut" style="margin-top: -10px">
     <form action="/auth/registration" method="post">
         <h5>Реєстрація</h5>
@@ -37,7 +62,7 @@
         <input placeholder="Ім'я"  type="text"  name="name">
         <input placeholder="По батькові"  type="text"  name="patronime">
         <input placeholder="Посада" type="text" name="position" id="position">
-        <div class="input-field col s6">
+        <div>
             <div style="width: auto; height: auto">
                 <label>Звання користувача</label>
                 <select class="browser-default" name="rank">
@@ -62,11 +87,11 @@
         <label id = 'lenghtPassword' style="color: red"></label>
         <input id="password1" type="password"   name="repeated_password" placeholder="Пітвердження пароля">
         <label id = 'errorMessage' style="color: red"></label>
-        <button class="btn waves-effect waves-light" type="submit" id="button">Зареєструватись</button>
+        <button class="btn waves-effect waves-light" type="submit" id="registration">Зареєструватись</button>
     </form>
 </div>
 
-{{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> --}}
-<script src="font/registration.js"></script>
+
+<script src="/font/registration.js"></script>
 </body>
 </html>
