@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Сторінка реєстрації</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/autr.css">
     <link rel="stylesheet" href="/css/model.css">
     <link rel="stylesheet" href="/css/header.css">
 </head>
@@ -58,14 +58,14 @@
 <div class="aut" style="margin-top: -10px">
     <form action="/auth/registration" method="post">
         <h5>Реєстрація</h5>
-        <input placeholder="Прізвище"  type="text"  name="surname">
-        <input placeholder="Ім'я"  type="text"  name="name">
-        <input placeholder="По батькові"  type="text"  name="patronime">
+        <input placeholder="Прізвище"  type="text"  name="surname" id="surname">
+        <input placeholder="Ім'я"  type="text"  name="name" id="name">
+        <input placeholder="По батькові"  type="text"  name="patronime" id="patronime">
         <input placeholder="Посада" type="text" name="position" id="position">
         <div>
-            <div style="width: auto; height: auto">
-                <label>Звання користувача</label>
-                <select class="browser-default" name="rank">
+            <div style="width: auto; height: auto; background-color: #6F6D5B;">
+                <label>Віськове звання користувача</label>
+                <select class="browser-default" name="rank" id="rank">
                     <option value="" disabled selected>Вибір Статусу користувача</option>
                     <option value="Лейтенант">Лейтенант</option>
                     <option value="стр.Лейтенант">стр.Лейтенант</option>
@@ -76,18 +76,15 @@
                 </select>
             </div>
         </div>
-        <input placeholder="Військова частина" type="text" name="staff" >
-        <label id="staffError" style="color: red"></label>
-        <input placeholder="Закінчив інститут" type="text" name="institute">
-        <input placeholder="Факультет" type="text" name="facultet">
-        <input placeholder="За спеціальністю" type="text" name="specialize">
-        <input placeholder="Рік випуску" type="text" name="graduation">
-        <input type="text" placeholder="Login" name="login">
+        <input placeholder="Військова частина" type="text" name="staff" id="staff">
+        <input placeholder="Закінчив інститут" type="text" name="institute" id="institute">
+        <input placeholder="Факультет" type="text" name="facultet" id="facultet">
+        <input placeholder="За спеціальністю" type="text" name="specialize" id="specialize">
+        <input placeholder="Рік випуску" type="text" name="graduation" id="graduation">
+        <input type="text" placeholder="Логін" name="login" id="login">
         <input id="password" type="password"   name="password" placeholder="Пароль">
-        <label id = 'lenghtPassword' style="color: red"></label>
-        <input id="password1" type="password"   name="repeated_password" placeholder="Пітвердження пароля">
-        <label id = 'errorMessage' style="color: red"></label>
-        <button class="btn waves-effect waves-light" type="submit" id="registration">Зареєструватись</button>
+        <input id="repeated_password" type="password"   name="repeated_password" placeholder="Пітвердження пароля">
+        <button  type="submit" id="registration">Зареєструватись</button>
     </form>
 </div>
 

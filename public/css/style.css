@@ -1,7 +1,7 @@
 body {
     padding: 0;
     margin: 0;
-    background-color: #B3E5FC;
+    background-color: #474F3F;
 }
 
 .divclass {
@@ -11,7 +11,7 @@ body {
     margin: 20px auto;
     height: auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    background-color: #FFFFFF;
+    background-color: #6F6D5B;
     margin-top: 30px;
     border-radius: 25px;
 }
@@ -33,7 +33,7 @@ body {
     width: 30%;
     height: auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    background-color: #FFFFFF;
+    background-color: #6F6D5B;
     margin: 10px auto;
     border-radius: 25px;
     padding: 10px;
@@ -63,6 +63,21 @@ header {
     margin-top: 10px;
 }
 
+.icon {
+    width: 100px;
+    height: 100px;
+    margin-top: 80px;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.icon img {
+    height: 100px;
+    width: 100px;
+}
+/* 
 @media only screen and (max-width: 770px) {
     .aut button {
         height: auto;
@@ -294,4 +309,4 @@ tbody input {
     background-color: #FFFFFF;
     text-align: left;
     width: auto;
-}
+} */

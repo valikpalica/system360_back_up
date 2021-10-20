@@ -18,7 +18,7 @@
     width: 60%;
     height: auto;
     padding: 25px;
-    background-color: #fafafa;
+    background-color: #6F6D5B;
     border: solid 1px grey;
     border-radius: 25px;
 }
@@ -29,11 +29,16 @@
     margin-right: 10px;
     font-family:  'Open Sans', sans-serif;
     padding: 5px 10px;
-    font-size: 15px;
-    color: #4caf50;
+    border-radius: 5px;
+    border: 1px solid #474F3F;
+   
+    font-size: 25px;
+    background-color: #DFD7CC;
+    color: #474F3F;
 }
 .my_content a:hover{
-    color: #2e7d32;
+    color: #474F3F;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .foot_modal{
