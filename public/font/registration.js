@@ -19,6 +19,7 @@ function main(){
 const check_info = () =>{
     let array = push_array();
     let personal_info =  check_personal_info(array);
+    console.log(personal_info);
 
 };
 
@@ -69,13 +70,31 @@ const push_array = ()=>{
 const check_personal_info = (array) =>{ 
     let _all_error = [];
     array.forEach(item =>{
-        _all_error.push(check_value_on_null_or_undefiend(item.value,item.text));
+        let obj_status = check_value_on_null_or_undefiend(item.value,item.text);
+        obj_status?_all_error.push(obj_status):undefined;
     });
-    _all_error.length == 0 ? false : _all_error;
+    if (_all_error.length > 0) {
+        return _all_error;
+    } else {
+        let password = array.find(item=>{
+            if(item.id == 'password'){
+                return item;
+            }
+        });
+        let repeated_password = array.find(item=>{
+            if(item.id == 'repeated_password'){
+                return item;
+            }
+        });
+        let password_status = check_password(password.value,repeated_password.value);
+        password_status!=undefined?_all_error.push(password_status):false;
+    };
+    //console.log(_all_error);
+    return _all_error.length == 0 ? false : _all_error;
 };
 
 const check_password  = (password,repeated_password) => {
-    console.log(`password ${password} repeated_password ${repeated_password}`)
+    console.log(`password ${password} repeated_password ${repeated_password}`);
     if(password!=repeated_password){
         return {status:false,text:'Паролі не співпадають'};
     }
@@ -83,8 +102,8 @@ const check_password  = (password,repeated_password) => {
 
 
 const check_value_on_null_or_undefiend = (value,name) =>{
-        console.log(`value ${value} name ${name}`);
-        if(value==null || value==undefined){
+        if(value==''){
+            //console.log(`Не заповнене значення:${name}`);
             return {status:false,text:`Не заповнене значення:${name}`};
         }   
 };

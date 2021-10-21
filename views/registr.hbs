@@ -58,10 +58,10 @@
 <div class="aut" style="margin-top: -10px">
     <form action="/auth/registration" method="post">
         <h5>Реєстрація</h5>
-        <input placeholder="Прізвище"  type="text"  name="surname" id="surname">
-        <input placeholder="Ім'я"  type="text"  name="name" id="name">
-        <input placeholder="По батькові"  type="text"  name="patronime" id="patronime">
-        <input placeholder="Посада" type="text" name="position" id="position">
+        <input placeholder="Прізвище"  type="text"  name="surname" id="surname" autocomplete='off'>
+        <input placeholder="Ім'я"  type="text"  name="name" id="name" autocomplete='off'>
+        <input placeholder="По батькові"  type="text"  name="patronime" id="patronime" autocomplete='off'>
+        <input placeholder="Посада" type="text" name="position" id="position" autocomplete='off'>
         <div>
             <div style="width: auto; height: auto; background-color: #6F6D5B;">
                 <label>Віськове звання користувача</label>
@@ -76,14 +76,14 @@
                 </select>
             </div>
         </div>
-        <input placeholder="Військова частина" type="text" name="staff" id="staff">
-        <input placeholder="Закінчив інститут" type="text" name="institute" id="institute">
-        <input placeholder="Факультет" type="text" name="facultet" id="facultet">
-        <input placeholder="За спеціальністю" type="text" name="specialize" id="specialize">
-        <input placeholder="Рік випуску" type="text" name="graduation" id="graduation">
-        <input type="text" placeholder="Логін" name="login" id="login">
-        <input id="password" type="password"   name="password" placeholder="Пароль">
-        <input id="repeated_password" type="password"   name="repeated_password" placeholder="Пітвердження пароля">
+        <input placeholder="Номер військової частини" type="text" name="staff" id="staff" autocomplete='off'>
+        <input placeholder="Закінчив інститут" type="text" name="institute" id="institute" autocomplete='off'>
+        <input placeholder="Факультет" type="text" name="facultet" id="facultet" autocomplete='off'>
+        <input placeholder="За спеціальністю (номер спеціальності)" type="text" name="specialize" id="specialize" autocomplete='off'>
+        <input placeholder="Рік випуску" type="text" name="graduation" id="graduation" autocomplete='off'>
+        <input type="text" placeholder="Логін" name="login" id="login" autocomplete='off'>
+        <input id="password" type="password"   name="password" placeholder="Пароль" autocomplete='off'>
+        <input id="repeated_password" type="password"   name="repeated_password" placeholder="Пітвердження пароля" autocomplete='off'>
         <button  type="submit" id="registration">Зареєструватись</button>
     </form>
 </div>
