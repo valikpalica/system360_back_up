@@ -92,16 +92,9 @@ const check_personal_info = (array) =>{
     if (_all_error.length > 0) {
         return _all_error;
     } else {
-        let password = array.find(item=>{
-            if(item.id == 'password'){
-                return item;
-            }
-        });
-        let repeated_password = array.find(item=>{
-            if(item.id == 'repeated_password'){
-                return item;
-            }
-        });
+        
+        let password = array.find(({id}) => id == 'password');
+        let repeated_password  = array.find(({id})=>id == 'repeated_password');
         let password_status = check_password(password.value,repeated_password.value);
         password_status!=undefined?_all_error.push(password_status):false;
     };
