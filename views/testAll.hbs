@@ -14,23 +14,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    {{!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> --}}
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/header.css">
+     <link rel="stylesheet" href="/css/table.css">
+
 </head>
 <body>
 
    
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-             <a class="navbar-brand" href="/auth/autorization">Вхід</a>
-            <a class="navbar-brand" href="/auth/registration">Реєстрація</a>
+        <nav>
+            <div class="div_header">
+                 <a class="navbar-brand" href="/auth/autorization">Вхід</a>
+                <a class="navbar-brand" href="/auth/registration">Реєстрація</a>
+                <a class="navbar-brand" href="/page/statistic">Статистика персоналу</a>
+             </div> 
         </nav>
    
 <div class="icon">
     <img src="/img/emblam.png" alt="emblam">
 </div>
 
-    <h3 class="header1">Загальні відомості</h3>
+    <div class="label_h"><h3 class="header1">Загальні відомості</h3></div>
     <div class="divclass"  style="margin-top: -10px" id="main">
         <input placeholder="Прізвище"  type="text"  name="surname" id="surname">
         <input placeholder="Ім'я"  type="text"  name="name" id="name">
@@ -42,7 +48,7 @@
 
         
     <div class="divclass"  style="margin-top: 30px" hidden="true" id="test">
-        <table  class="table-bordered" style="align-items: center">
+        <table  style="align-items: center">
             <thead>
                <tr>
                 <th scope="col">Питання
@@ -51,7 +57,7 @@
             </tr>
             </thead>
                
-               <div class="table-responsive">
+               <div>
                    <tbody class="tbody">
                 <tr>
                     <td colspan="3"><h6>Загальна компетентність</h6></td>
