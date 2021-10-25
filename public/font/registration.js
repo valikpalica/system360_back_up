@@ -4,23 +4,39 @@ document.addEventListener('DOMContentLoaded',()=>{
     button.onmouseover = check_info;
 });
 
-function main(){ 
+document.getElementById('close_modal').addEventListener('click',()=>{
+    let modal = document.getElementById("myModal");
+    document.getElementById('registration').disabled = false;
+    modal.style.display = "none";
+});
+
+function main(array_error){ 
     document.getElementById('registration').disabled = true;
-    console.log('model');
+    create_list_error(array_error);
     let modal = document.getElementById("myModal");
     modal.style.display = "block";
-    let span = document.getElementById("close_modal");
-    span.onclick = function() {
-        document.getElementById('registration').disabled = false;
-        modal.style.display = "none";
-    }
 };
+
+
+const create_list_error = (array_error) => {
+    let div = document.getElementById('list_error');
+    let ul = document.createElement('ul');
+    array_error.forEach(item=>{
+        let li = document.createElement('li');
+        li.textContent = item.text;
+        ul.appendChild(li);
+    })
+    div.replaceChild(ul,div.childNodes[0]);
+};
+
 
 const check_info = () =>{
     let array = push_array();
     let personal_info =  check_personal_info(array);
-    console.log(personal_info);
-
+    //console.log(personal_info);
+    if(personal_info){
+        main(personal_info);
+    }
 };
 
 const push_array = ()=>{
@@ -94,7 +110,7 @@ const check_personal_info = (array) =>{
 };
 
 const check_password  = (password,repeated_password) => {
-    console.log(`password ${password} repeated_password ${repeated_password}`);
+    //console.log(`password ${password} repeated_password ${repeated_password}`);
     if(password!=repeated_password){
         return {status:false,text:'Паролі не співпадають'};
     }
