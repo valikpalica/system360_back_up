@@ -22,47 +22,6 @@ body {
 .divclass input {
     text-align: center;
 }
-.header {
-    text-align: center;
-    margin: 2% auto;
-    padding-bottom: 50px;
-}
-
-.aut {
-    text-align: center;
-    width: 30%;
-    height: auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    background-color: #6F6D5B;
-    margin: 10px auto;
-    border-radius: 25px;
-    padding: 10px;
-}
-
-.aut input {
-    margin: 10px;
-}
-
-header {
-    width: 100%;
-    height: auto;
-}
-
-.link {
-    display: inline;
-    margin: 0px 10px;
-}
-
-.link a {
-    margin: 0px 5px;
-}
-
-.aut button {
-    height: auto;
-    width: 160px;
-    margin-top: 10px;
-}
-
 .icon {
     width: 100px;
     height: 100px;
@@ -77,6 +36,23 @@ header {
     height: 100px;
     width: 100px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* 
 @media only screen and (max-width: 770px) {
     .aut button {

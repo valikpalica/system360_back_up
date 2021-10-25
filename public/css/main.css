@@ -1,0 +1,57 @@
+.aut {
+    text-align: center;
+    width: 30%;
+    height: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: #6F6D5B;
+    margin: 10px auto;
+    border-radius: 25px;
+    padding: 10px;
+}
+
+select{
+    padding: 10;
+    margin:10px ;
+    background-color: #6F6D5B;
+    color: #DFD7CC;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 90%;
+    font-size: 1.1rem;
+}
+
+button{
+    margin-top: 10px;
+    background-color: #DFD7CC;
+    padding: 15px 30px;
+    border-radius: 5px;
+    border: solid 1px #474F3F;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button:active{
+    margin-top: 10px;
+    background-color: #DFD7CC;
+    padding: 15px 30px;
+    border-radius: 5px;
+    border: solid 1px #474F3F;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-family: Arial, Helvetica, sans-serif;
+}
+button:target{
+    margin-top: 10px;
+    background-color: #DFD7CC;
+    padding: 15px 30px;
+    border-radius: 5px;
+    border: solid 1px #474F3F;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+label{
+    
+    font-size: 1.1rem;
+    background-color: #6F6D5B;
+    color: #DFD7CC;
+    font-family: Arial, Helvetica, sans-serif;
+}

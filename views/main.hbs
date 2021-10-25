@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Сторінка Атентифікації</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    {{!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> --}}
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/header.css">
 </head>
 <body>
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="/auth/autorization">Вхід</a>
-            <a class="navbar-brand" href="/auth/registration">Реєстрація</a>
-            <a class="navbar-brand" href="/page/statistic">Статистика персоналу</a>
+        <nav>
+             <div class="div_header">
+                 <a class="navbar-brand" href="/auth/autorization">Вхід</a>
+                <a class="navbar-brand" href="/auth/registration">Реєстрація</a>
+                <a class="navbar-brand" href="/page/statistic">Статистика персоналу</a>
+             </div>
         </nav>
     
 <div class="icon">
@@ -20,9 +23,9 @@
 </div>
 <form action="/page/anceta" method="POST">
     <div class="aut">
-   <div style="width: auto; height: auto" id='type_anceta'>   
-    </div>
-    <button class="btn waves-effect waves-light" type="submit" id="button">Відкрити</button>
+        <div style="width: auto; height: auto" id='type_anceta'>   
+        </div>
+    <button type="submit" id="button">Відкрити</button>
 </div>
 </form>
 
