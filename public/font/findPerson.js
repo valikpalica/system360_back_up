@@ -115,3 +115,5 @@ document.getElementById('save').addEventListener('click',(event)=>{
     let {array_quastion,array_compatence} = getValue();
     Myfetch(obj,array_quastion,array_compatence);
 });
+
+//
