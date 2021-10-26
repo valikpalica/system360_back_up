@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/header.css">
      <link rel="stylesheet" href="/css/table.css">
+     <link rel="stylesheet" href="/css/model.css">
 
 </head>
 <body>
@@ -36,7 +37,7 @@
 </div>
 
     <div class="label_h"><h3 class="header1">Загальні відомості</h3></div>
-    <div class="divclass"  style="margin-top: -10px" id="main">
+    <div class="findPerson"  style="margin-top: -10px" id="main">
         <input placeholder="Прізвище"  type="text"  name="surname" id="surname">
         <input placeholder="Ім'я"  type="text"  name="name" id="name">
         <input placeholder="По батькові"  type="text"  name="patronime" id="patronime">
@@ -45,6 +46,17 @@
         
     </div>
 
+
+<div id="myModal" class="my_modal">
+    <div  class="my_content">
+      <h4>Помилки виявленні при заповнені анкети</h4>
+      <div id="list_error" class="list_errr">
+      </div>
+      <div class="foot_modal">
+          <a href="#!" id="close_modal">Agree</a>
+      </div>
+    </div>
+</div>
         
     <div class="divclass"  style="margin-top: 30px" hidden="true" id="test">
         <table  style="align-items: center">

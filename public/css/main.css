@@ -17,8 +17,13 @@ select{
     font-family: Arial, Helvetica, sans-serif;
     width: 90%;
     font-size: 1.1rem;
+    height: 2rem;
+    border: #DFD7CC 1px solid;
+    border-radius: 5px;
 }
-
+select:active{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
 button{
     margin-top: 10px;
     background-color: #DFD7CC;
@@ -89,9 +94,12 @@ h5{
 }
 
 input[type=number]{
-    width: 10rem;
-    height: 1.5rem;
+    width: 30%;
+    height: 2rem;
     background-color: #6F6D5B;
+    border-radius: 5px;
+    border: 1px solid #DFD7CC;
+    text-align: center;
 }
 
 select{
@@ -126,6 +134,18 @@ body {
 
 .divclass {
     width: 80%;
+    text-align: center;
+    padding: 10px 20px;
+    margin: 20px auto;
+    height: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: #6F6D5B;
+    margin-top: 30px;
+    border-radius: 25px;
+}
+
+.findPerson{
+    width: 50%;
     text-align: center;
     padding: 10px 20px;
     margin: 20px auto;

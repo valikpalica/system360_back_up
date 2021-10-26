@@ -25,10 +25,7 @@ document.getElementById('findPerson').addEventListener('click',async (event)=>{
     }
 });
 
-document.getElementById('save').addEventListener('click',(event)=>{
-    let {array_quastion,array_compatence} = getValue();
-    Myfetch(obj,array_quastion,array_compatence);
-});
+
 
 
 const getValue = () =>{
@@ -99,3 +96,22 @@ const getCookie = () =>{
     let matches = document.cookie.match(/type_anceta=([1-5])/);
     return matches[1];
 };
+
+
+document.getElementById('save').addEventListener('mouseenter',()=>{
+    console.log('modal');
+    document.getElementById('save').disabled = true;
+    let modal = document.getElementById("myModal");
+    modal.style.display = "block";
+});
+
+document.getElementById('close_modal').addEventListener('click',()=>{
+    document.getElementById('save').disabled = false;
+    let modal = document.getElementById('myModal');
+    modal.style.display = "none";
+});
+
+document.getElementById('save').addEventListener('click',(event)=>{
+    let {array_quastion,array_compatence} = getValue();
+    Myfetch(obj,array_quastion,array_compatence);
+});

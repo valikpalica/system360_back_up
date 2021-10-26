@@ -6,6 +6,7 @@
 	width: 100%;
 	height: 100%;
 	background-color: rgba(88, 88, 88, 0.5);
+    z-index: 1000;
 }
 .my_modal h4{
     text-align: center;
