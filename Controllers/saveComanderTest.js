@@ -1,7 +1,7 @@
 const Admins = require('../DB_functionality/Clasess/Admins');
 
 module.exports = (req,res)=>{
-    console.log('comander Test');
+    //console.log('comander Test');
     //console.log(req.user);
     let who = req.user.id_user;
     let {id_user} = req.body.personInfo;
