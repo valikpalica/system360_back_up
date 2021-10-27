@@ -35,23 +35,42 @@ const getValue = () =>{
     for(let i = 0; i<tr.length;i++){
             if(tr[i].id!=''){
                 let input = tr[i].getElementsByTagName('input');
-                for(let j=0;j<input.length;j++){
-                    if(input[j].checked){
-                        if(input[j].className=='quastion'){
-                            array_quastion.push({id:tr[i].id,value:input[j].value})
-                        }
-                        else if(input[j].className=='compatence'){
-                            array_compatence.push({id:tr[i].id,value:input[j].value})
-                        }
-                        else{
-                            console.log('not class name')
-                        }
-                    }
+                let {status,value} = radio_value(input);
+                if(status=='quastion'){
+                    array_quastion.push({id:tr[i].id,value});
+                }
+                else if(status == 'compatence'){
+                    array_compatence.push({id:tr[i].id,value});
                 }
             }
         }
     return {array_quastion,array_compatence};
 }
+
+
+const radio_value  = (element) =>{
+    let status;
+    let value;
+    for(let i = 0;i<element.length;i++){
+        if(element[i].className=='quastion'){
+            status = element[i].className;
+            if(element[i].checked){
+            value = element[i].value;
+            return {status:'quastion',value};
+            }
+            
+        }
+        else if(element[i].className=='compatence'){
+            status = element[i].className;
+            if(element[i].checked){
+            value = element[i].value;
+            return {status:'compatence',value};
+            }
+            
+        }
+    }
+    return {status,value};
+};
 
 
 
@@ -103,6 +122,10 @@ document.getElementById('save').addEventListener('mouseenter',()=>{
     document.getElementById('save').disabled = true;
     let modal = document.getElementById("myModal");
     modal.style.display = "block";
+    let {array_quastion,array_compatence} = getValue();
+    console.log(array_quastion,array_compatence);
+
+
 });
 
 document.getElementById('close_modal').addEventListener('click',()=>{
