@@ -118,15 +118,32 @@ const getCookie = () =>{
 
 
 document.getElementById('save').addEventListener('mouseenter',()=>{
-    console.log('modal');
-    document.getElementById('save').disabled = true;
-    let modal = document.getElementById("myModal");
-    modal.style.display = "block";
     let {array_quastion,array_compatence} = getValue();
-    console.log(array_quastion,array_compatence);
-
-
+    // console.log(array_quastion,array_compatence);
+    let status_quastion = check_value_error(array_quastion);
+    let status_compatence = check_value_error(array_compatence);
+    if(status_quastion||status_compatence){
+        document.getElementById('save').disabled = true;
+        let modal = document.getElementById("myModal");
+        let div = document.getElementById('list_error');
+        let lable = document.createElement('label');
+        lable.textContent = 'Не пройденно усі тести';
+        div.replaceChild(lable,div.childNodes[0]);
+        modal.style.display = "block";
+    } 
 });
+
+
+const check_value_error = (array) =>{
+    for(let i=0;i<array.length;i++){
+        if(array[i].value == undefined){
+            return true;
+        }
+    };
+    return false;
+}
+
+
 
 document.getElementById('close_modal').addEventListener('click',()=>{
     document.getElementById('save').disabled = false;
@@ -139,4 +156,3 @@ document.getElementById('save').addEventListener('click',(event)=>{
     Myfetch(obj,array_quastion,array_compatence);
 });
 
-//
