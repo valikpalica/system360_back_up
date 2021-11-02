@@ -51,13 +51,18 @@ nav a:hover{
 
 .dropdown_content ul{
     padding-left: 0px;
+    margin: 0;
 }
 .dropdown_content li {
     list-style-type: none;
     margin-top: 10px;
     font-size: 1.1rem;
+    text-align: center;
     border-bottom: 1px solid #DFD7CC;
-    border-width: 80%;
+    border-width: 1px;
+}
+.dropdown_content li:last-child {
+    border-bottom: none;
 }
 
 .dropdown_content{
@@ -66,7 +71,6 @@ nav a:hover{
     border-radius: 5px;
     border: 1px solid #bdbdbd;
     background-color: #424242;
-    padding: 5px;
     opacity: 0;
     transform: translateY(-10px);
     transition: opacity 150ms ease-in-out;
