@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сторінка Атентифікації</title>
-    {{!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> --}}
+    <title>Document</title>
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/header.css">
+     <link rel="stylesheet" href="/css/table.css">
+     <link rel="stylesheet" href="/css/model.css">
+
 </head>
 <body>
-        <nav>
+
+   <nav>
              <div class="div_header">
                     <a class="navbar-brand" href="/auth/autorization">Вхід</a>
                 <div class="dropdown">
@@ -30,21 +33,35 @@
                 </div>
              </div>
         </nav>
-    
+   
 <div class="icon">
     <img src="/img/emblam.png" alt="emblam">
 </div>
-<form action="/page/anceta" method="POST">
-    <div class="aut">
-        <div style="width: auto; height: auto" id='type_anceta'>   
-        </div>
-    <button type="submit" id="button">Відкрити</button>
+
+    <div class="label_h"><h3 class="header1">Загальні відомості</h3></div>
+    <div class="findPerson"  style="margin-top: -10px" id="main">
+        <input placeholder="Прізвище"  type="text"  name="surname" id="surname">
+        <input placeholder="Ім'я"  type="text"  name="name" id="name">
+        <input placeholder="По батькові"  type="text"  name="patronime" id="patronime">
+        
+             <button class="btn waves-effect waves-light" type="submit" id="findPerson">Перевірка наявності людини у системі</button>
+        
+    </div>
+
+
+<div id="myModal" class="my_modal">
+    <div  class="my_content">
+      <h4>Помилки виявленні при заповнені анкети</h4>
+      <div id="list_error" class="list_errr">
+      </div>
+      <div class="foot_modal">
+          <a href="#!" id="close_modal">Agree</a>
+      </div>
+    </div>
 </div>
-</form>
-
-
-{{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> --}}
-<script src="/font/mainPage.js"></script>
-
+    
+<script src="/font/findPerson.js"></script>
+</body>
+</html>
 </body>
 </html>
