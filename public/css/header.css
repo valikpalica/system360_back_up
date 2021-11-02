@@ -71,21 +71,19 @@ nav a:hover{
     border-radius: 5px;
     border: 1px solid #bdbdbd;
     background-color: #424242;
-    opacity: 0;
     transform: translateY(-10px);
     transition: opacity 150ms ease-in-out;
+    opacity: 0;
     pointer-events: none;
 }
 
 
-
-
-.dropdown > .link:hover + .dropdown_content{
+.dropdown > .link:hover + .dropdown_content , a{
     opacity: 1;
-    
-}
+    pointer-events: auto;
+};
 
-.dropdown > .link:focus + .dropdown_content{
+.dropdown > .link:focus + .dropdown_content , a{
     opacity: 1;
     pointer-events: auto;
 };
