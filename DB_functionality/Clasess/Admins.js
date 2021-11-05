@@ -97,18 +97,13 @@ class Admins{
             let data = [];
             let index = 0;
             for(let i=0;i<query.length;i++){
-                //console.log(query[i].dataValues);
-                //console.log('index!==data.dataValues.id_main_quastion' , index!==query[i].dataValues.id_main_quastion);
                 if(index!==query[i].dataValues.id_main_quastion){
                     let obj = {};
                     obj['main'] = query[i].dataValues.name_main_quastion;
                     obj['id_main'] = query[i].dataValues.id_main_quastion;
                     obj['array'] = [];
-                    index++;
-                    // console.log(obj);
-                    // console.log('index' , index);
+                    index++; 
                     for(let j = 0;j<query.length;j++){
-                        //console.log('index==data.dataValues.id_main_quastion',index==query[j].dataValues.id_main_quastion);
                         if(index==query[j].dataValues.id_main_quastion){
                             obj['array'].push(
                                 {
@@ -118,13 +113,9 @@ class Admins{
                             })
                         }
                     }
-                    //console.log('finish');
-                    //console.log(obj);
                     data.push(obj);
                 }
-
-            };
-            //console.log(data);
+            }; 
             return data;
         } catch (error) {
             console.error(error);
@@ -263,5 +254,9 @@ class Admins{
             console.error(error);
         }
     };
+    async information_for_anceta(){
+        
+    };
+
 }
 module.exports = new Admins;

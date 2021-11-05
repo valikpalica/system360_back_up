@@ -30,6 +30,9 @@
                              <li>
                                  <a class="navbar-brand" href="/page/information">Інформація військово-службовця</a>
                              </li>
+                              <li>
+                                 <a class="navbar-brand" href="/page/main">Головна сторінка</a>
+                             </li>
                          </ul>
                     </div>
                 </div>
@@ -57,10 +60,21 @@
       <div id="list_error" class="list_errr">
       </div>
       <div class="foot_modal">
-          <a href="#!" id="close_modal">Agree</a>
+          <a id="close_modal">Agree</a>
       </div>
     </div>
 </div>
+
+<div id="succses_modal" class="my_modal">
+    <div  class="my_content">
+      <h4>Данні були збережені</h4>
+      <div class="foot_modal">
+          <a href="/page/main">Перейти до меню</a>
+      </div>
+    </div>
+</div>
+
+
         
     <div class="divclass"  style="margin-top: 30px" hidden="true" id="test">
         <table  style="align-items: center">
@@ -112,7 +126,6 @@
                 </tr>
 
 
-
                 {{#each compatence}}
 
                 <tr id={{this.id_competence}} name='id_compatence'>
@@ -145,8 +158,6 @@
     </div>
 
 
-
-{{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> --}}
 
 <script src="/font/findPerson.js"></script>
 </body>
