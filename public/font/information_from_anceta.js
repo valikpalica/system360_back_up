@@ -11,7 +11,7 @@ document.getElementById('findPerson').addEventListener('click',e=>{
         body:JSON.stringify({name,surname,patronime})
     }).then(async data=>{
        let response = await data.json();
-       console.log(response.answer);
+       console.log(response);
     }).catch(e=>{
         console.error(e);
     });

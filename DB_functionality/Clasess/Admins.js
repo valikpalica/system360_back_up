@@ -186,7 +186,7 @@ class Admins{
                         pobaganja:pobaganja,
                         comander:comander,
                         comander_vch:comander_vch,
-                        comander_mpz:'comander_mpz',
+                        comander_mpz:comander_mpz,
                         opinion:opinion
                     }).then(async (data)=>{
                         console.log(data);
@@ -292,7 +292,6 @@ class Admins{
                     let ralation = data[i].dataValues.Ralation_main_seconds;
                     //console.log(`${name_main} ${main_point}`);
                     for(let j = 0;j<ralation.length;j++){
-                        
                         //console.log(ralation[j].dataValues.id_second_quastion);
                         let second_index = ralation[j].dataValues.id_second_quastion;
                         let dataSecond = await Second_quastion.findAll({
@@ -309,9 +308,7 @@ class Admins{
                                 second_point:dataSecond[k].dataValues.Assessment_second_quastions[0].dataValues.point});
                         }
                      }
-
-
-                     main.push({name_main,main_point,array_second});
+                main.push({name_main,main_point,array_second});
             }
 
             return main;
