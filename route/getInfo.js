@@ -18,5 +18,5 @@ router.post('/save',checkAuth,saveAllTest);
 router.post('/saveComanderTest',checkAuth,saveComanderTest);
 router.get('/specialize',checkAuth,getSpecialize);
 router.post('/getYearStatistic',checkAuth,getYearStatistic);
-router.post('/information_for_person',checkAuth,information_for_anceta); 
+router.post('/information_for_person',information_for_anceta); 
 module.exports = router;

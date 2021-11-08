@@ -1,5 +1,6 @@
 const {Sequelize} = require('sequelize');
 const sequlize = require('../connection');
+const Main_quastion = require('../models/Main_quastion');
 
 const assessment_main_quastion = sequlize.define('Assessment_main_quastion',{
     id_assessment:{
