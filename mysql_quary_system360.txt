@@ -1,0 +1,1 @@
+select * from main_quastions inner join ralation_main_seconds on main_quastions.id_main_quastion = ralation_main_seconds.id_main_quastion inner join second_quastions on ralation_main_seconds.id_second_quastion = second_quastions.id_second_quastion where main_quastions.id_type_anceta = 5;
