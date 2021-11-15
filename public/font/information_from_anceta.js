@@ -16,6 +16,3 @@ document.getElementById('findPerson').addEventListener('click',e=>{
         console.error(e);
     });
 });
-
-
-
