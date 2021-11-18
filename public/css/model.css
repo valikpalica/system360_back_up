@@ -10,6 +10,8 @@
 }
 .my_modal h4{
     text-align: center;
+    color: #DFD7CC;
+    font-size: 30px;
 }
 
 .my_content{
@@ -45,4 +47,27 @@
 .foot_modal{
     width: 100%;
     text-align: right;
+}
+
+.main_info{
+    width: auto;
+}
+
+.main_info li{
+    color: #DFD7CC;
+    list-style-type: none;
+    font-size: 20px;
+    text-align: start;
+}
+
+.opinion{
+    width: 100%;
+    text-align: start;
+    margin: 10px 0 ;
+}
+
+.opinion label{
+    font-size: 20px;
+    color: #DFD7CC;
+    margin-left: 2rem;
 }

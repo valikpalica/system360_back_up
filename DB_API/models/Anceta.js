@@ -30,7 +30,7 @@ const Anceta = sequlize.define('Anceta',{
 Anceta.hasMany(Ralation_Anceta_User,{onDelete:'cascade',foreignKey:'id_anceta'});
 Anceta.hasMany(Assessment_competence,{onDelete:'cascade',foreignKey:'id_anceta'});
 Anceta.hasMany(Assessment_quastion,{onDelete:'cascade',foreignKey:'id_anceta'});
-Anceta.hasOne(Info,{onDelete:'cascade'});
+Anceta.hasOne(Info,{onDelete:'cascade',foreignKey:'id_info'});
 
 
 

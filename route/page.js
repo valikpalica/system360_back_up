@@ -10,6 +10,9 @@ router.get('/main',checkAuth,(req,res)=>{
 });
 router.post('/anceta',checkAuth,typeAnceta);
 router.get('/statistic',checkAuth,statistic);
+router.get('/information',(req,res)=>{
+    res.render('Information_from_ancetas.hbs');
+});
 
 
 

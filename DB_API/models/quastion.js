@@ -6,7 +6,6 @@ const ralation_quastion = require('./ralation_quastion');
 const Quastion = sequlize.define('Quastion',{
     id_quastion:{
         type: Sequelize.INTEGER,
-        autoIncrement: true,
         primaryKey: true,
         allowNull: false
     },

@@ -86,8 +86,9 @@ const Myfetch = async (personInfo,array_quastion,array_compatence)=>{
         },
         body:JSON.stringify({personInfo,array_quastion,array_compatence,type_anceta})
         }).then((data)=>{
-            alert('Succsesful');
-            window.location.href = '/page/main'
+            // //alert('Succsesful');
+            // window.location.href = '/page/main'
+            succsesful_modal();
         }).catch(err=>{
         alert('Error');
         console.log(err);
@@ -98,6 +99,10 @@ const Myfetch = async (personInfo,array_quastion,array_compatence)=>{
     }
 };
 
+
+const succsesful_modal = () =>{
+    document.getElementById('succses_modal').style.display = 'block';
+};
 
 
 const test = (array1,array2) =>{

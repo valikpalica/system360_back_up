@@ -5,8 +5,6 @@ document.addEventListener("DOMContentLoaded", async ()=>{
     create_selector(type_anceta.answer)
 });
 
-
-
 const create_selector = (array) =>{
     let div  = document.getElementById('type_anceta');
     let label  = document.createElement('label');

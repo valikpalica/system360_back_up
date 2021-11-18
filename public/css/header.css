@@ -6,6 +6,7 @@ nav {
     top: 0;
     left: 0;
     z-index: 1000;
+    display: inline-block;
 }
 
 nav a {
@@ -14,14 +15,57 @@ nav a {
     padding: 5px 10px;
     color: #bdbdbd;
     text-decoration: none;
+    
 }
 
 nav a:hover{
     color: #eeeeee;
+    pointer-events: auto;
 }
+.link{
+    background-color: #424242;
+    color: #bdbdbd;
+    padding: 0;
+    margin: 0;
+    border: none;
+    font-size: 1rem;
+    
+}
+
+.link:hover{
+    color: #eeeeee;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+   
+}
+
 .div_header{
     margin-top: 15px;
+    
 }
+
+.dropdown{
+    position: absolute;
+    right: 1rem;
+    width: auto;
+    display: inline-block;
+    text-align: right;
+}
+
+.dropdown_content ul{
+    padding-left: 0px;
+    margin: 0;
+}
+.dropdown_content li {
+    list-style-type: none;
+    margin-top: 10px;
+    font-size: 1.1rem;
+    text-align: center;
+    border-bottom: 1px solid #DFD7CC;
+    border-width: 1px;
+}
+<<<<<<< HEAD
 
 
 .header_select{
@@ -32,3 +76,32 @@ nav a:hover{
     margin: 0;
     margin-right: 10px;
 }
+=======
+.dropdown_content li:last-child {
+    border-bottom: none;
+}
+
+.dropdown_content{
+    position: relative;
+    margin-top: 2em;
+    border-radius: 5px;
+    border: 1px solid #bdbdbd;
+    background-color: #424242;
+    transform: translateY(-10px);
+    transition: opacity 150ms ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+
+.dropdown > .link:focus + .dropdown_content {
+    opacity: 1;
+    pointer-events: auto;
+};
+
+
+
+
+
+>>>>>>> test

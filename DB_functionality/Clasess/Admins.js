@@ -4,6 +4,7 @@ const RallationCompatence = require('../../DB_API/models/ralation_competens');
 const Quastion = require('../../DB_API/models/quastion');
 const Competence = require('../../DB_API/models/competence');
 const Main_quastion = require('../../DB_API/models/Main_quastion');
+const Second_quastion  = require('../../DB_API/models/Second_quastion');
 const sequlize = require('../../DB_API/connection');
 const user = require('../../DB_API/models/user');
 const Anceta = require('../../DB_API/models/Anceta');
@@ -13,6 +14,8 @@ const Info = require('../../DB_API/models/Info');
 const assessment_main_quastion = require('../../DB_API/models/assessment_main_quastion');
 const assessment_second_quastion = require('../../DB_API/models/assessment_second_quastion');
 const Ralation_Anceta_User = require('../../DB_API/models/ralation_anceta_user');
+const Type_anceta = require('../../DB_API/models/Type_anceta');
+const ralation_main_second = require('../../DB_API/models/Ralation_main_second_quastion');
 
 
 
@@ -97,18 +100,13 @@ class Admins{
             let data = [];
             let index = 0;
             for(let i=0;i<query.length;i++){
-                //console.log(query[i].dataValues);
-                //console.log('index!==data.dataValues.id_main_quastion' , index!==query[i].dataValues.id_main_quastion);
                 if(index!==query[i].dataValues.id_main_quastion){
                     let obj = {};
                     obj['main'] = query[i].dataValues.name_main_quastion;
                     obj['id_main'] = query[i].dataValues.id_main_quastion;
                     obj['array'] = [];
-                    index++;
-                    // console.log(obj);
-                    // console.log('index' , index);
+                    index++; 
                     for(let j = 0;j<query.length;j++){
-                        //console.log('index==data.dataValues.id_main_quastion',index==query[j].dataValues.id_main_quastion);
                         if(index==query[j].dataValues.id_main_quastion){
                             obj['array'].push(
                                 {
@@ -118,13 +116,9 @@ class Admins{
                             })
                         }
                     }
-                    //console.log('finish');
-                    //console.log(obj);
                     data.push(obj);
                 }
-
-            };
-            //console.log(data);
+            }; 
             return data;
         } catch (error) {
             console.error(error);
@@ -139,7 +133,6 @@ class Admins{
                 Name:name,
                 Patronime:patronime,
             }});
-            console.log(data);
             return data;
         } catch (error) {
             console.error(error);
@@ -176,46 +169,47 @@ class Admins{
                 id_user_whom_assessment:whom,
                 id_type_anceta:type_anceta
             }).then(data=>{
-                //console.log(data);
+                console.log(data);
                 Ralation_Anceta_User.create({
                     id_user:whom,
                     id_anceta:data.id_anceta
                 }).then(data=>{
                     console.log(data);
-                }).catch(err=>{
-                    throw new Error(err);
-                });
-                Info.create({
-                    id_info:data.id_anceta, 
-                    vidpovidnist:vidpovidnist,
-                    stagnenja:stagnenja,
-                    zaohochenja:zaohochenja,
-                    year_point:year_point,
-                    nedolik:nedolik,
-                    pobaganja:pobaganja,
-                    comander:comander,
-                    comander_vch:comander_vch,
-                    comander_mpz:comander_mpz,
-                    opinion:opinion
-                }).then(async (data)=>{
-                    // console.log(data);
-                    array.forEach(async (item)=>{
-                        await assessment_main_quastion.create({
-                            id_info:data.id_info,
-                            id_midle_quastion:parseInt(item.main),
-                            midle_point:item.midle,
-                        }).catch(err=>{new Error(err)});
-                        item.array.forEach(second_item =>{
-                            assessment_second_quastion.create({
+                    Info.create({
+                        id_info:data.id_anceta, 
+                        vidpovidnist:vidpovidnist,
+                        stagnenja:stagnenja,
+                        zaohochenja:zaohochenja,
+                        year_point:year_point,
+                        nedolik:nedolik,
+                        pobaganja:pobaganja,
+                        comander:comander,
+                        comander_vch:comander_vch,
+                        comander_mpz:comander_mpz,
+                        opinion:opinion
+                    }).then(async (data)=>{
+                        console.log(data);
+                        array.forEach(async (item)=>{
+                            await assessment_main_quastion.create({
                                 id_info:data.id_info,
-                                id_second_quastion: second_item.id,
-                                point:second_item.value
-                            }).catch(err=>new Error(err));
+                                id_midle_quastion:parseInt(item.main),
+                                midle_point:item.midle,
+                            }).catch(err=>{new Error(err)});
+                            item.array.forEach(second_item =>{
+                                assessment_second_quastion.create({
+                                    id_info:data.id_info,
+                                    id_second_quastion: second_item.id,
+                                    point:second_item.value
+                                }).catch(err=>new Error(err));
+                            });
                         });
+                    }).catch(err=>{
+                        throw new Error(err);
                     });
                 }).catch(err=>{
                     throw new Error(err);
                 });
+                
             }).catch(err=>{
                 throw new Error(err);
             });
@@ -261,6 +255,79 @@ class Admins{
 
         } catch (error) {
             console.error(error);
+        }
+    };
+    async information_for_anceta(id){
+        try {
+            console.log(id);
+            let data = await Anceta.findAll({
+                where:{id_user_whom_assessment:id,
+                    id_type_anceta:5
+                },
+                include:[{
+                    model:Info,
+                }
+            ]
+            });
+            return data;
+        } catch (error) {
+           throw Error(error);
+        }
+    };
+    async getResultComanderTest(id){
+        try {
+            let main = [];
+            let data = await Main_quastion.findAll({
+                include:[
+                    {model:assessment_main_quastion,where:{id_info:id}},
+                    {model:ralation_main_second}
+                ]
+            });
+            
+            for(let i=0;i<data.length;i++){
+                    // console.log(data[i].dataValues.name_main_quastion);
+                    // console.log(data[i].dataValues.Assessment_main_quastions[0].dataValues.midle_point);
+                    let name_main = data[i].dataValues.name_main_quastion;
+                    let main_point = data[i].dataValues.Assessment_main_quastions[0].dataValues.midle_point;
+                    let array_second = [];
+                    let ralation = data[i].dataValues.Ralation_main_seconds;
+                    //console.log(`${name_main} ${main_point}`);
+                    for(let j = 0;j<ralation.length;j++){
+                        //console.log(ralation[j].dataValues.id_second_quastion);
+                        let second_index = ralation[j].dataValues.id_second_quastion;
+                        let dataSecond = await Second_quastion.findAll({
+                            where:{id_second_quastion:second_index},
+                            include:[{model:assessment_second_quastion,
+                                where:{id_info:id}
+                            }]
+                        })
+                        for(let k = 0;k<dataSecond.length;k++){
+                            //console.log(dataSecond[k].dataValues);
+                            // console.log(dataSecond[k].dataValues.name_quastion);
+                            //console.log(dataSecond[k].dataValues.Assessment_second_quastions[0].dataValues.point);
+                            array_second.push({second_name:dataSecond[k].dataValues.name_quastion,
+                                second_point:dataSecond[k].dataValues.Assessment_second_quastions[0].dataValues.point});
+                        }
+                     }
+                main.push({name_main,main_point,array_second});
+            }
+
+            return main;
+
+            
+        } catch (error) {
+            throw Error(error);
+        }
+    }
+    async getStatistic(id_user){
+        try {
+            let query_statistic_quastion = `select anceta.id_user_whom_assessment, anceta.id_type_anceta, assessment_quastions.id_quastion, assessment_quastions.point_quastion, quastions.quastion, COUNT(assessment_quastions.id_quastion) as count, SUM(assessment_quastions.point_quastion) as sum, (SUM(assessment_quastions.point_quastion)/COUNT(assessment_quastions.id_quastion)) as division from anceta inner join assessment_quastions on anceta.id_anceta = assessment_quastions.id_anceta inner join quastions on quastions.id_quastion = assessment_quastions.id_quastion where  anceta.id_user_whom_assessment = "${id_user}" group by quastions.id_quastion, anceta.id_type_anceta order by anceta.id_type_anceta,assessment_quastions.id_quastion;`;
+            let statistic_quastion = await sequlize.query(query_statistic_quastion);
+            let query_statistic_competence = `select anceta.id_user_whom_assessment, anceta.id_type_anceta, assessment_competences.id_competence, competences.competence, COUNT(assessment_competences.id_competence) as count, SUM(assessment_competences.point_competence) as sum, (SUM(assessment_competences.point_competence)/ COUNT(assessment_competences.id_competence)) as division from anceta inner join assessment_competences on anceta.id_anceta = assessment_competences.id_anceta inner join competences on competences.id_competence  = assessment_competences.id_competence where anceta.id_user_whom_assessment = "${id_user}" group by competences.id_competence, anceta.id_type_anceta order by anceta.id_type_anceta,assessment_competences.id_competence;`;
+            let statistic_competence = await sequlize.query(query_statistic_competence);
+        return {statistic_quastion,statistic_competence};
+        } catch (error) {
+            throw new Error(error);
         }
     };
 }

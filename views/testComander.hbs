@@ -23,11 +23,28 @@
 
     
         <nav>
-          <div class="div_header">
-                 <a class="navbar-brand" href="/auth/autorization">Вхід</a>
-                <a class="navbar-brand" href="/auth/registration">Реєстрація</a>
-                <a class="navbar-brand" href="/page/statistic">Статистика усіх військово-службовців</a>
-             </div> 
+             <div class="div_header">
+                    <a class="navbar-brand" href="/auth/autorization">Вхід</a>
+                <div class="dropdown">
+                    <button class="link">Меню</button>
+                    <div class="dropdown_content" id="dropdown_content">
+                         <ul>
+                             <li>
+                                 <a class="navbar-brand" href="/page/statistic">Статистика усіх військово-службовців</a>
+                             </li>
+                             <li>
+                                 <a class="navbar-brand" href="/auth/registration">Реєстрація</a>
+                             </li>
+                             <li>
+                                 <a class="navbar-brand" href="/page/information">Інформація військово-службовця</a>
+                             </li>
+                              <li>
+                                 <a class="navbar-brand" href="/page/main">Головна сторінка</a>
+                             </li>
+                         </ul>
+                    </div>
+                </div>
+             </div>
         </nav>
     
 <div class="icon">
@@ -121,6 +138,9 @@
     <div class="input-field">
         <input id="comander_vch" type="text" name="response" placeholder="Командир військової частини">
     </div>
+    <div class="input-field">
+        <input id="comander_mpz" type="text" name="response" placeholder="Заступник з МПЗ">
+    </div>
     <label>П.І.Б</label>
     <div style="height: 10px;"></div>
     <button class="btn waves-effect waves-light" type="save" id="finish" style="margin-top: 20px;">Далі</button>
@@ -141,6 +161,7 @@
     </div>
     <button class="btn waves-effect waves-light" type="save" id="save">Зберегти</button>
 </div>
+
 
 
 {{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> --}}
