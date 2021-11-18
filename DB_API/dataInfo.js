@@ -21,56 +21,28 @@ const read = async () =>{
                         type_anceta:item.type
                     })
         });
-       // console.log(competence);
-        competence.forEach(item=>{
-            Compatence.create({
-                competence:item.name
-            }).then(data=>{
-                //console.log(data)
-            }).catch(err=>{
-                throw new Error(err);
-            });
+       
+
+
+    for(let i=0;i<quastion.length;i++){
+        let {types} = quastion[i];
+        let id_quastion = i + 1;
+        await Quastion.create({
+            id_quastion,
+            quastion:quastion[i].name
+        });
+        await read_types_ralation_quastion(id_quastion,types);
+    };
+
+    for(let i = 0;i<competence.length;i++){
+        let {types} = competence[i];
+        let id_competence = i + 1;
+        await Compatence.create({
+            id_competence,
+            competence:competence[i].name
         })
-        //console.log(quastion);
-        quastion.forEach(item=>{
-            Quastion.create({
-                quastion:item.name
-            }).then(data=>{
-                //console.log(data);
-            }).catch(err=>{
-                throw new Error(err);
-            })
-        }); 
-        //console.log(quastion.type);
-       quastion.forEach((obj,index)=>{
-            let {types} = obj;
-            ++index
-            types.forEach(item=>{
-                //console.log(index,item);
-                Ralation_quastion.create({
-                    id_quastion:index,
-                    id_type_q:item
-                }).then(data=>{
-                    //console.log(data);
-                }).catch(err=>{
-                    throw new Error(err);
-                })
-            })
-       });
-       competence.forEach((obj,index)=>{
-           let {types} = obj;
-           ++index;
-           types.forEach(item=>{
-               Ralation_competence.create({
-                id_competence:index,
-                id_type_c:item
-               }).then(data=>{
-                   //console.log(data);
-               }).catch(err=>{
-                   throw new Error(err);
-               });
-           })
-       })
+        await read_types_ralation_competence(id_competence,types);
+    };
 
        for(let i=0;i<comanderTest.data.length;i++){
         try {
@@ -95,35 +67,17 @@ const write_second_quastion  = async (array,main_index) =>{
 
     try {
         for(let i=0;i<array.length;i++){
-            let j = i;
             await Second_quastion.create({
-                            name_quastion:array[i]
-            });
+                    name_quastion:array[i]
+                });
             await write_ralation_main_second(main_index,++index_for_ralation_main_and_second);
         }
     } catch (error) {
         throw new Error(error);
     }
-    // array.forEach(async (item)=>{
-    //     try {
-    //         Second_quastion.create({
-    //             name_quastion:item
-    //         }).then(data=>{
-    //             // console.log(data);
-    //             write_ralation_main_second(main_index,++index_for_ralation_main_and_second).then(data=>{
-    //                 // console.log(data);
-    //             }).catch(err=>{
-    //                 throw new Error(err);
-    //             });
-    //         });
-    //     } catch (error) {
-    //         throw new Error(error);
-    //     }
-    // });
 };
 
 const write_ralation_main_second = async (id_main,id_second) =>{
-    //console.log(id_main,id_second);
     try {
         await Ralation_main_second_quastion.create({
             id_main_quastion:id_main,
@@ -133,5 +87,36 @@ const write_ralation_main_second = async (id_main,id_second) =>{
         throw new Error(error);
     }
 };
+
+
+const read_types_ralation_quastion = async (id_quastion,types)=>{
+    try {
+
+        for(let i=0;i<types.length;i++){
+            let id_types = types[i];
+            await Ralation_quastion.create({
+                id_quastion:id_quastion,
+                id_type_q:id_types
+            })
+        }
+    } catch (error) {
+        throw new Error(error);
+    }
+};
+
+const read_types_ralation_competence = async (id_competence,types)=>{
+    try {
+        for(let i=0;i<types.length;i++){
+            let id_types = types[i];
+            await Ralation_competence.create({
+                id_competence:id_competence,
+                id_type_c:id_types
+            })
+        }
+    } catch (error) {
+        throw new Error(error);
+    }
+};
+
 
 read();

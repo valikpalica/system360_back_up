@@ -133,7 +133,6 @@ class Admins{
                 Name:name,
                 Patronime:patronime,
             }});
-            console.log(data);
             return data;
         } catch (error) {
             console.error(error);
@@ -262,7 +261,9 @@ class Admins{
         try {
             console.log(id);
             let data = await Anceta.findAll({
-                where:{id_user_whom_assessment:id},
+                where:{id_user_whom_assessment:id,
+                    id_type_anceta:5
+                },
                 include:[{
                     model:Info,
                 }
@@ -318,6 +319,16 @@ class Admins{
             throw Error(error);
         }
     }
-
+    async getStatistic(id_user){
+        try {
+            let query_statistic_quastion = `select anceta.id_user_whom_assessment, anceta.id_type_anceta, assessment_quastions.id_quastion, assessment_quastions.point_quastion, quastions.quastion, COUNT(assessment_quastions.id_quastion) as count, SUM(assessment_quastions.point_quastion) as sum, (SUM(assessment_quastions.point_quastion)/COUNT(assessment_quastions.id_quastion)) as division from anceta inner join assessment_quastions on anceta.id_anceta = assessment_quastions.id_anceta inner join quastions on quastions.id_quastion = assessment_quastions.id_quastion where  anceta.id_user_whom_assessment = "${id_user}" group by quastions.id_quastion, anceta.id_type_anceta order by anceta.id_type_anceta,assessment_quastions.id_quastion;`;
+            let statistic_quastion = await sequlize.query(query_statistic_quastion);
+            let query_statistic_competence = `select anceta.id_user_whom_assessment, anceta.id_type_anceta, assessment_competences.id_competence, competences.competence, COUNT(assessment_competences.id_competence) as count, SUM(assessment_competences.point_competence) as sum, (SUM(assessment_competences.point_competence)/ COUNT(assessment_competences.id_competence)) as division from anceta inner join assessment_competences on anceta.id_anceta = assessment_competences.id_anceta inner join competences on competences.id_competence  = assessment_competences.id_competence where anceta.id_user_whom_assessment = "${id_user}" group by competences.id_competence, anceta.id_type_anceta order by anceta.id_type_anceta,assessment_competences.id_competence;`;
+            let statistic_competence = await sequlize.query(query_statistic_competence);
+        return {statistic_quastion,statistic_competence};
+        } catch (error) {
+            throw new Error(error);
+        }
+    };
 }
 module.exports = new Admins;

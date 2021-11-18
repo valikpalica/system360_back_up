@@ -1,25 +1,26 @@
-select * from main_quastions inner join ralation_main_seconds on main_quastions.id_main_quastion = ralation_main_seconds.id_main_quastion inner join second_quastions on ralation_main_seconds.id_second_quastion = second_quastions.id_second_quastion where main_quastions.id_type_anceta = 5;
+----------------------------------------------------------------
 
 
-select users.*, anceta.* from users inner join ralation_anceta_users on users.id_user  = ralation_anceta_users.id_user inner join anceta on ralation_anceta_users.id_anceta = anceta.id_anceta where users.graduation = 2000;
-
-select SUM(point_competence), COUNT(id_competence) from assessment_competences group by (id_competence);
-
-
-
-select (SUM(assessment_competences.point_competence)/COUNT(assessment_competences.id_competence)) as division, SUM(assessment_competences.point_competence) as sum, COUNT(assessment_competences.id_competence) as count, competences.competence from assessment_competences inner join competences on competences.id_competence = assessment_competences.id_competence inner join anceta on assessment_competences.id_anceta = anceta.id_anceta inner join ralation_anceta_users on anceta.id_anceta = ralation_anceta_users.id_anceta inner join users on users.id_user = ralation_anceta_users.id_user where users.graduation = 2001  group by (assessment_competences.id_competence);
+select anceta.id_user_whom_assessment, anceta.id_type_anceta, assessment_quastions.id_quastion, assessment_quastions.point_quastion, quastions.quastion, COUNT(assessment_quastions.id_quastion) as count, SUM(assessment_quastions.point_quastion) as sum, (SUM(assessment_quastions.point_quastion)/COUNT(assessment_quastions.id_quastion)) as division from anceta inner join assessment_quastions on anceta.id_anceta = assessment_quastions.id_anceta inner join quastions on quastions.id_quastion = assessment_quastions.id_quastion where anceta.id_type_anceta = 1 and anceta.id_user_whom_assessment = 1 group by quastions.id_quastion;
 
 
 
+select anceta.id_user_whom_assessment, anceta.id_type_anceta, assessment_competences.id_competence, competences.competence, COUNT(assessment_competences.id_competence) as count, SUM(assessment_competences.point_competence) as sum, (SUM(assessment_competences.point_competence)/ COUNT(assessment_competences.id_competence)) as division from anceta inner join assessment_competences on anceta.id_anceta = assessment_competences.id_anceta inner join competences on competences.id_competence  = assessment_competences.id_competence where anceta.id_type_anceta = 1 and anceta.id_user_whom_assessment = 1 group by competences.id_competence;
 
 
-select (SUM(assessment_quastions.point_quastion)/COUNT(assessment_quastions.id_quastion)) as division, SUM(assessment_quastions.point_quastion) as sum, COUNT(assessment_quastions.id_quastion) as count, quastions.quastion from users inner join ralation_anceta_users on users.id_user = ralation_anceta_users.id_user inner join anceta on 
-ralation_anceta_users.id_anceta = anceta.id_anceta inner join assessment_quastions on anceta.id_anceta = assessment_quastions.id_anceta inner join quastions on assessment_quastions.id_quastion = quastions.id_quastion where users.graduation = 2001 group by (assessment_quastions.id_quastion);
+------------------------------------------------------------------
+
+
+----------------------------------------------------------------
+
+
+select anceta.id_user_whom_assessment, anceta.id_type_anceta, assessment_quastions.id_quastion, assessment_quastions.point_quastion, quastions.quastion, COUNT(assessment_quastions.id_quastion) as count, SUM(assessment_quastions.point_quastion) as sum, (SUM(assessment_quastions.point_quastion)/COUNT(assessment_quastions.id_quastion)) as division from anceta inner join assessment_quastions on anceta.id_anceta = assessment_quastions.id_anceta inner join quastions on quastions.id_quastion = assessment_quastions.id_quastion where  anceta.id_user_whom_assessment = 1 group by quastions.id_quastion, anceta.id_type_anceta order by anceta.id_type_anceta,assessment_quastions.id_quastion;
 
 
 
+select anceta.id_user_whom_assessment, anceta.id_type_anceta, assessment_competences.id_competence, competences.competence, COUNT(assessment_competences.id_competence) as count, SUM(assessment_competences.point_competence) as sum, (SUM(assessment_competences.point_competence)/ COUNT(assessment_competences.id_competence)) as division from anceta inner join assessment_competences on anceta.id_anceta = assessment_competences.id_anceta inner join competences on competences.id_competence  = assessment_competences.id_competence where anceta.id_user_whom_assessment = 1 group by competences.id_competence, anceta.id_type_anceta order by anceta.id_type_anceta,assessment_competences.id_competence;
 
 
+------------------------------------------------------------------
 
-select (SUM(assessment_quastions.point_quastion)/COUNT(assessment_quastions.id_quastion)) as division, SUM(assessment_quastions.point_quastion) as sum, COUNT(assessment_quastions.id_quastion) as count, quastions.quastion from
-assessment_quastions inner join quastions on quastions.id_quastion = assessment_quastions.id_quastion inner join anceta on anceta.id_anceta = assessment_quastions.id_anceta inner join ralation_anceta_users on anceta.id_anceta = ralation_anceta_users.id_anceta inner join users on users.id_user = ralation_anceta_users.id_user where users.graduation = 2000 group by (assessment_quastions.id_quastion);
+

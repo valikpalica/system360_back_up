@@ -6,7 +6,6 @@ const ralation_compatance = require('./ralation_competens');
 const Competence = sequlize.define('Competence',{
     id_competence:{
         type: Sequelize.INTEGER,
-        autoIncrement: true,
         primaryKey: true,
         allowNull: false
     },
