@@ -8,11 +8,11 @@ module.exports = (req,res)=>{
         information_for_anceta(data[0].dataValues.id_user).then(async(data)=>{
             let {id_anceta,id_user_whom_assessment} = data[0].dataValues;
             let {statistic_quastion,statistic_competence} = await getStatistic(id_user_whom_assessment); 
+            let obj = format_all_tests(statistic_quastion,statistic_competence);
             let {id_info,vidpovidnist,stagnenja,zaohochenja,year_point,nedolik,pobaganja,comander,comander_vch,comander_mpz,opinion} = data[0].dataValues.Info.dataValues
-            console.log(`${id_info} ${vidpovidnist} ${stagnenja} ${zaohochenja} ${year_point} ${nedolik} ${pobaganja} ${comander} ${comander_vch} ${comander_mpz} ${opinion}`);
+            //console.log(`${id_info} ${vidpovidnist} ${stagnenja} ${zaohochenja} ${year_point} ${nedolik} ${pobaganja} ${comander} ${comander_vch} ${comander_mpz} ${opinion}`);
             getResultComanderTest(id_info).then(dataCom =>{
-
-                res.status(200).json({surname,name,patronime,vidpovidnist,stagnenja,zaohochenja,year_point,nedolik,pobaganja,comander,comander_vch,comander_mpz,opinion,dataCom,statistic_quastion,statistic_competence,Position,Rank,Staff,institute,facultet,specialize,graduation})
+                res.status(200).json({surname,name,patronime,vidpovidnist,stagnenja,zaohochenja,year_point,nedolik,pobaganja,comander,comander_vch,comander_mpz,opinion,dataCom,obj,Position,Rank,Staff,institute,facultet,specialize,graduation})
             }).catch(e=>{
                 throw Error(e)
             });
@@ -24,3 +24,60 @@ module.exports = (req,res)=>{
         res.sendStatus(500);   
     });
 };
+
+
+const format_all_tests = (statistic_quastion,statistic_competence)=>{
+    let obj = {
+        data_comanders:{
+            quastion:[],
+            competence:[]
+        },
+        data_neighborhood:{
+            quastion:[],
+            competence:[],
+        },
+        data_staff:{
+            quastion:[],
+            competence:[],
+        },
+        data_own:{
+            quastion:[],
+            competence:[],
+        },
+    }
+    statistic_quastion.forEach(element => {
+        if(element.id_type_anceta == 1){
+            obj.data_staff.quastion.push({quastion:element.quastion,division:element.division,type_anceta:element.id_type_anceta});
+        }
+        else if(element.id_type_anceta == 2){
+            obj.data_neighborhood.quastion.push({quastion:element.quastion,division:element.division,type_anceta:element.id_type_anceta});
+        }
+        else if(element.id_type_anceta == 3){
+            obj.data_comanders.quastion.push({quastion:element.quastion,division:element.division,type_anceta:element.id_type_anceta});
+        }
+        else if(element.id_type_anceta == 4){
+            obj.data_own.quastion.push({quastion:element.quastion,division:element.division,type_anceta:element.id_type_anceta});
+        }
+        else{
+            console.log('unidentified type_anceta');
+        }
+    });
+    statistic_competence.forEach(element=>{
+        if(element.id_type_anceta == 1){
+            obj.data_staff.competence.push({competence:element.competence,division:element.division,type_anceta:element.id_type_anceta});
+        }
+        else if(element.id_type_anceta == 2){
+            obj.data_neighborhood.competence.push({competence:element.competence,division:element.division,type_anceta:element.id_type_anceta});
+        }
+        else if(element.id_type_anceta == 3){
+            obj.data_comanders.competence.push({competence:element.competence,division:element.division,type_anceta:element.id_type_anceta});
+        }
+        else if(element.id_type_anceta == 4){
+            obj.data_own.competence.push({competence:element.competence,division:element.division,type_anceta:element.id_type_anceta});
+        }
+        else{
+            console.log('unidentified type_anceta');
+        }
+    });
+    return obj;
+}

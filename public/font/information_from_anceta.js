@@ -11,7 +11,6 @@ document.getElementById('findPerson').addEventListener('click',e=>{
         body:JSON.stringify({name,surname,patronime})
     }).then(async data=>{
        let response = await data.json();
-       console.log(response);
        createOpinion(response);
     }).catch(e=>{
         console.error(e);
@@ -25,7 +24,8 @@ const createOpinion = (obj) =>{
     document.getElementById('test_commander').hidden = false;
     createMainInfo(obj);
     create_table_comander_test(obj);
-    
+    create_last_info(obj);
+    create_tables(obj);
 };
 const createMainInfo = (obj) =>{
     let {Rank, surname, name,patronime, Position,facultet,institute,graduation,specialize,vidpovidnist,year_point,zaohochenja,stagnenja} = obj;
@@ -87,3 +87,68 @@ const create_table_comander_test = (obj) =>{
         });
     });
 };
+
+const create_last_info = (obj) =>{
+    let {opinion,pobaganja,comander,comander_mpz,comander_vch} = obj;
+    let ul = document.getElementById('last_info');
+    let li1 = document.createElement('li');
+    li1.textContent = `Загальний висновок ${opinion}`;
+    let li2 = document.createElement('li');
+    li2.textContent = `Побажання щодо покращення підготовки офіцерів ${pobaganja}`;
+    let li3 = document.createElement('li');
+    li3.textContent = `Безпосередній командир ${comander}`;
+    let li4 = document.createElement('li');
+    li4.textContent = `Заступник командира військової частини з МПЗ ${comander_mpz}`;
+    let li5 = document.createElement('li');
+    li5.textContent = `Командир військової частини ${comander_vch}`;
+    ul.appendChild(li1);
+    ul.appendChild(li2);
+    ul.appendChild(li3);
+    ul.appendChild(li4);
+    ul.appendChild(li5);
+};
+
+
+const create_tables = ({obj}) =>{
+    let {data_comanders,data_neighborhood,data_own,data_staff} = obj;   
+    create_table(data_comanders,'tbody_comanders');
+    create_table(data_neighborhood,'tbody_neighborhood');
+    create_table(data_staff,'tbody_staff');
+    create_table(data_own,'tbody_own');
+}
+
+
+const create_table = (data_comanders,id_table) =>{
+    let table = document.getElementById(id_table);
+    let {competence,quastion} = data_comanders;
+    let tr_quastions = document.createElement('tr');
+    tr_quastions.textContent = 'Загальна компетентність';
+    tr_quastions.colSpan = 2;
+    tr_quastions.style.fontSize  = '25px'
+    table.appendChild(tr_quastions);
+    quastion.forEach(item=>{
+        let tr = document.createElement('tr');
+        let td_quastions_name = document.createElement('td');
+        let td_quastions_point = document.createElement('td');
+        td_quastions_name.textContent = item.quastion;
+        td_quastions_point.textContent = Math.round(+item.division);
+        tr.appendChild(td_quastions_name);
+        tr.appendChild(td_quastions_point);
+        table.appendChild(tr);
+    });
+    tr_competences = document.createElement('tr');
+    tr_competences.textContent = 'Фахова компетентність';
+    tr_competences.colSpan = 2;
+    tr_competences.style.fontSize  = '25px'
+    table.appendChild(tr_competences);
+    competence.forEach(item=>{
+        let tr = document.createElement('tr');
+        let td_competences_name  = document.createElement('td');
+        let td_competences_point = document.createElement('td');
+        td_competences_name.textContent = item.competence;
+        td_competences_point.textContent = Math.round(+item.division);
+        tr.appendChild(td_competences_name);
+        tr.appendChild(td_competences_point);
+        table.appendChild(tr);
+    });
+}

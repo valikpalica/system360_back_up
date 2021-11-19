@@ -325,7 +325,7 @@ class Admins{
             let statistic_quastion = await sequlize.query(query_statistic_quastion);
             let query_statistic_competence = `select anceta.id_user_whom_assessment, anceta.id_type_anceta, assessment_competences.id_competence, competences.competence, COUNT(assessment_competences.id_competence) as count, SUM(assessment_competences.point_competence) as sum, (SUM(assessment_competences.point_competence)/ COUNT(assessment_competences.id_competence)) as division from anceta inner join assessment_competences on anceta.id_anceta = assessment_competences.id_anceta inner join competences on competences.id_competence  = assessment_competences.id_competence where anceta.id_user_whom_assessment = "${id_user}" group by competences.id_competence, anceta.id_type_anceta order by anceta.id_type_anceta,assessment_competences.id_competence;`;
             let statistic_competence = await sequlize.query(query_statistic_competence);
-        return {statistic_quastion,statistic_competence};
+        return {statistic_quastion:statistic_quastion[0],statistic_competence:statistic_competence[0]};
         } catch (error) {
             throw new Error(error);
         }
