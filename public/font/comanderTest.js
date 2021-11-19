@@ -60,7 +60,6 @@ document.getElementById('save').addEventListener('click',(event)=>{
         }
     }
     let info = getInfo();
-    //console.log(info);
     Myfetch(obj,array,info);
 });
 
@@ -68,7 +67,6 @@ const getInfo = () =>{
     let obj = {};
     let info_div  = document.getElementById('test1');
     let inputs = info_div.getElementsByTagName('input');
-    //console.log(inputs);
     let opinion = document.getElementById('opinion').value;
     obj[`opinion`] = opinion;
     obj[`vidpovidnist`] = document.getElementById('vidpovidnist').value;
@@ -87,7 +85,7 @@ const midlePoint = (array) =>{
 }
 
 const Myfetch = async(personInfo,array,info) =>{
-    console.log(personInfo,array);
+    console.log({personInfo,array,info});
     let type_anceta = getCookie();
     fetch('/getInfo/saveComanderTest',{
         method:'POST',
@@ -96,8 +94,6 @@ const Myfetch = async(personInfo,array,info) =>{
         },
         body:JSON.stringify({personInfo,array,info,type_anceta})
     }).then(data=>{
-        //alert('OK');
-        //console.log(data);
         window.location.href = '/page/main'
     }).catch(err=>{
         alert('Error')

@@ -89,8 +89,7 @@ const create_table_comander_test = (obj) =>{
     });
 };
 
-<<<<<<< HEAD
-=======
+
 const create_last_info = (obj) =>{
     let {opinion,pobaganja,comander,comander_mpz,comander_vch} = obj;
     let ul = document.getElementById('last_info');
@@ -155,4 +154,4 @@ const create_table = (data_comanders,id_table) =>{
         table.appendChild(tr);
     });
 }
->>>>>>> test
+
