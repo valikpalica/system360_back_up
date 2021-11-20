@@ -5,6 +5,7 @@ document.getElementById('next').addEventListener('click',(event)=>{
     document.getElementById('test1').hidden = false;
 })
 document.getElementById('finish').addEventListener('click',(event)=>{
+    console.log('page 2');
     document.getElementById('test1').hidden = true;
     document.getElementById('last').hidden = false;
 })
@@ -24,7 +25,6 @@ document.getElementById('findPerson').addEventListener('click',async (event)=>{
         body:JSON.stringify({surname,name,patronime})
     });
     let json = await data.json();
-    //console.log(json.answer);
     if(json.answer.length!= 0){
         obj = json.answer[0];
         let test = document.getElementById('test');
@@ -39,36 +39,63 @@ document.getElementById('findPerson').addEventListener('click',async (event)=>{
 
 
 document.getElementById('save').addEventListener('click',(event)=>{
-    let table = document.getElementsByTagName('table');
-    let input = table[0].getElementsByTagName('input');
+    let array = getQuastion();
+    let info = getInfo();
+    Myfetch(obj,array,info);
+});
+
+
+
+const getQuastion  = () =>{
+    let tr = document.getElementsByClassName('main_quastion')
     let array = [];
     let index = 0;
-    for(let i=0;i<input.length;i++){
-        //console.log(input[i].name,input[i].id,input[i].value);
-        if(index!=input[i].name){
-            let obj = {};
-            obj['main'] = input[i].name;
+    for(let i=0;i<tr.length;i++){
+        let main_id = tr[i].getAttribute('main_quastion_id');
+        let obj = {};
+        if(index!=main_id){
+            obj['main'] = main_id;
             obj['array'] = [];
-            index++;
-            for(let j=0;j<input.length;j++){
-                if(input[i].name==input[j].name){
-                    obj['array'].push({id:input[j].id,value:input[j].value});
+            index = main_id;
+            for(let j=0;j<tr.length;j++){
+                let main_id_j = tr[j].getAttribute('main_quastion_id');
+                if(main_id == main_id_j){
+                    let inputs = tr[j].getElementsByTagName('input');
+                    obj['array'].push(getValue(inputs));
                 }
-            }
+            };
             obj['midle'] = midlePoint(obj['array']);
             array.push(obj);
         }
+    };
+    return array;
+};
+
+
+const getValue = (array) =>{
+    let obj = {};
+    for(let i=0;i<array.length;i++){
+        if(array[i].checked){
+            obj['id'] = array[i].getAttribute('id_second');
+            obj['value'] = array[i].value
+        }
     }
-    let info = getInfo();
-    //console.log(info);
-    Myfetch(obj,array,info);
-});
+    return obj;
+}
+const midlePoint = (array) =>{
+    let midle = 0;
+    for(let i=0;i<array.length;i++){
+        midle += +array[i].value
+    }
+    return Math.round(midle/array.length);
+}
+
+
 
 const getInfo = () =>{
     let obj = {};
     let info_div  = document.getElementById('test1');
     let inputs = info_div.getElementsByTagName('input');
-    //console.log(inputs);
     let opinion = document.getElementById('opinion').value;
     obj[`opinion`] = opinion;
     obj[`vidpovidnist`] = document.getElementById('vidpovidnist').value;
@@ -78,17 +105,10 @@ const getInfo = () =>{
     return obj;
 }
 
-const midlePoint = (array) =>{
-    let midle = 0;
-    for(let i=0;i<array.length;i++){
-        midle += +array[i].value
-    }
-    return Math.round(midle/array.length);
-}
 
 const Myfetch = async(personInfo,array,info) =>{
-    console.log(personInfo,array);
     let type_anceta = getCookie();
+    console.log({personInfo,array,info,type_anceta});
     fetch('/getInfo/saveComanderTest',{
         method:'POST',
         headers:{
