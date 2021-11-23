@@ -1,14 +1,45 @@
 
 document.getElementById('next').addEventListener('click',(event)=>{
     console.log('page 1');
-    document.getElementById('test').hidden = true;
-    document.getElementById('test1').hidden = false;
+        document.getElementById('test').hidden = true;
+        document.getElementById('test1').hidden = false;
+    // if(check_quastion()){
+    //     document.getElementById('test').hidden = true;
+    //     document.getElementById('test1').hidden = false;
+    // }
+    // else{
+    //     console.log('the number of answers is not equal to the questions');
+    //     modal_error(['Не заповнені усі відповіді']);
+    // }
 })
-document.getElementById('finish').addEventListener('click',(event)=>{
-    console.log('page 2');
-    document.getElementById('test1').hidden = true;
-    document.getElementById('last').hidden = false;
-})
+const check_info = () =>{
+    let info = getInfo();
+    let status = true;
+    for(let property in info){
+        if(info[property] == ''){
+            status = false
+        }
+    }
+    return status;
+};
+
+document.getElementById('close_modal').addEventListener('click',()=>{
+    let modal = document.getElementById("myModal");
+    modal.style.display = "none";
+});
+
+const modal_error = (array_error)=>{
+    document.getElementById('myModal').style.display = 'block';
+    let div = document.getElementById('list_error');
+    let ul = document.createElement('ul');
+    array_error.forEach(element => {
+        let li = document.createElement('li');
+        li.textContent = element;
+        ul.appendChild(li);
+    });
+    div.replaceChild(ul,div.childNodes[0]);
+}
+
 
 let obj = {};
 document.getElementById('findPerson').addEventListener('click',async (event)=>{
@@ -33,17 +64,40 @@ document.getElementById('findPerson').addEventListener('click',async (event)=>{
         main.hidden = true;
     }
     else{
-        alert('system hasn`t this person in DataBase');
+        modal_error(['Данної особи не існує']);
     }
 });
 
 
 document.getElementById('save').addEventListener('click',(event)=>{
-    let array = getQuastion();
-    let info = getInfo();
-    Myfetch(obj,array,info);
+    if(check_info()){
+        let array = getQuastion();
+        let info = getInfo();
+        Myfetch(obj,array,info);
+    }
+    else{
+        modal_error(['Не заповнена вся інформація']);
+    }
 });
 
+
+
+const check_quastion = () =>{
+    let tr = document.getElementsByClassName('main_quastion');
+    let index_search = 0;
+    let quastions = document.getElementsByClassName('quastion');
+    for(let i =0;i<quastions.length;i++){
+        if(quastions[i].checked){
+            index_search++;
+        }
+    }
+    if(index_search==tr.length){
+        return true
+    }
+    else{
+        return false;
+    }
+};
 
 
 const getQuastion  = () =>{
@@ -109,20 +163,20 @@ const getInfo = () =>{
 const Myfetch = async(personInfo,array,info) =>{
     let type_anceta = getCookie();
     console.log({personInfo,array,info,type_anceta});
-    fetch('/getInfo/saveComanderTest',{
-        method:'POST',
-        headers:{
-            'Content-Type': 'application/json'
-        },
-        body:JSON.stringify({personInfo,array,info,type_anceta})
-    }).then(data=>{
-        //alert('OK');
-        //console.log(data);
-        window.location.href = '/page/main'
-    }).catch(err=>{
-        alert('Error')
-        console.error(err);
-    })
+    // fetch('/getInfo/saveComanderTest',{
+    //     method:'POST',
+    //     headers:{
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body:JSON.stringify({personInfo,array,info,type_anceta})
+    // }).then(data=>{
+    //     //alert('OK');
+    //     //console.log(data);
+    //     window.location.href = '/page/main'
+    // }).catch(err=>{
+    //     alert('Error')
+    //     console.error(err);
+    // })
 };
 const getCookie = () =>{
     let matches = document.cookie.match(/type_anceta=([1-5])/);
