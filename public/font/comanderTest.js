@@ -1,16 +1,14 @@
 
 document.getElementById('next').addEventListener('click',(event)=>{
     console.log('page 1');
+    if(check_quastion()){
         document.getElementById('test').hidden = true;
         document.getElementById('test1').hidden = false;
-    // if(check_quastion()){
-    //     document.getElementById('test').hidden = true;
-    //     document.getElementById('test1').hidden = false;
-    // }
-    // else{
-    //     console.log('the number of answers is not equal to the questions');
-    //     modal_error(['Не заповнені усі відповіді']);
-    // }
+    }
+    else{
+        console.log('the number of answers is not equal to the questions');
+        modal_error(['Не заповнені усі відповіді']);
+    }
 })
 const check_info = () =>{
     let info = getInfo();
