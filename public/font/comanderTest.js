@@ -168,13 +168,16 @@ const Myfetch = async(personInfo,array,info) =>{
         },
         body:JSON.stringify({personInfo,array,info,type_anceta})
     }).then(data=>{
-        //alert('OK');
-        //console.log(data);
-        window.location.href = '/page/main'
+        //window.location.href = '/page/main';
+        succsesful_modal();
     }).catch(err=>{
         alert('Error')
         console.error(err);
     })
+};
+
+const succsesful_modal = () =>{
+    document.getElementById('succses_modal').style.display = 'block';
 };
 const getCookie = () =>{
     let matches = document.cookie.match(/type_anceta=([1-5])/);
