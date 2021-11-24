@@ -1,5 +1,5 @@
 const express = require('express');
-const ActivateDB = require('./DB_API/ActivateDB');
+const sequlize = require('./DB_API/connection');
 const app = express();
 const path = require('path');
 const PORT = process.env.PORT || 8080;
@@ -39,9 +39,12 @@ app.use('/auth',auth);
 app.use('/page',page);
 app.use('/getInfo',getInfo);
 
+
 app.listen(PORT,async()=>{
     console.log(`server has been started on port ${PORT}`);
-    await ActivateDB();
+    sequlize.sync(/*{force:true}*/).then(()=>{
+        console.log("Tables connected");
+    }).catch(err=>console.log(err));
 })
 
 

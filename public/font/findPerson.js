@@ -21,10 +21,21 @@ document.getElementById('findPerson').addEventListener('click',async (event)=>{
         main.hidden = true;
     }
     else{
-        alert('system hasn`t this person in DataBase');
+        modal_error(['Данного користувача не існує'])
     }
 });
 
+const modal_error = (array_error)=>{
+    document.getElementById('myModal').style.display = 'block';
+    let div = document.getElementById('list_error');
+    let ul = document.createElement('ul');
+    array_error.forEach(element => {
+        let li = document.createElement('li');
+        li.textContent = element;
+        ul.appendChild(li);
+    });
+    div.replaceChild(ul,div.childNodes[0]);
+}
 
 
 
@@ -131,9 +142,11 @@ document.getElementById('save').addEventListener('mouseenter',()=>{
         document.getElementById('save').disabled = true;
         let modal = document.getElementById("myModal");
         let div = document.getElementById('list_error');
-        let lable = document.createElement('label');
-        lable.textContent = 'Не пройденно усі тести';
-        div.replaceChild(lable,div.childNodes[0]);
+        let ul = document.createElement('ul');
+        let li = document.createElement('li');
+        li.textContent = 'Не пройденно усі тести';
+        ul.appendChild(li);
+        div.replaceChild(ul,div.childNodes[0]);
         modal.style.display = "block";
     } 
 });

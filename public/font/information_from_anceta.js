@@ -13,11 +13,27 @@ document.getElementById('findPerson').addEventListener('click',e=>{
        let response = await data.json();
        createOpinion(response);
     }).catch(e=>{
-        console.error(e);
+        modal_error(['Данна анкета не сформована'])
     });
 });
 
+const modal_error = (array_message) =>{
+    let modal = document.getElementById('myModal');
+    modal.style.display = 'block';
+    let ul = document.createElement('ul');
+    array_message.forEach(item=>{
+        let li = document.createElement('li');
+        li.textContent = item;
+        ul.appendChild(li);
+    });
+    let div = document.getElementById('list_error');
+    div.replaceChild(ul,div.childNodes[0]);
+};
 
+document.getElementById('close_modal').addEventListener('click',(e)=>{
+     let modal  = document.getElementById('myModal');
+     modal.style.display = 'none';
+});
 
 
 const createOpinion = (obj) =>{

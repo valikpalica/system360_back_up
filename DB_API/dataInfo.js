@@ -14,7 +14,6 @@ let index_for_ralation_main_and_second = 0;
 
 const read = async () =>{
     try {
-        //console.log(type_anceta);
         type_anceta.forEach(async (item)=>{
            await Type_anceta.create({
                         id_type_anceta: item.id,
@@ -22,8 +21,6 @@ const read = async () =>{
                     })
         });
        
-
-
     for(let i=0;i<quastion.length;i++){
         let {types} = quastion[i];
         let id_quastion = i + 1;
