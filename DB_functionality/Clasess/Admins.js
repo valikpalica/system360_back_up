@@ -270,6 +270,7 @@ class Admins{
             ]
             });
             return data;
+            
         } catch (error) {
            throw Error(error);
         }

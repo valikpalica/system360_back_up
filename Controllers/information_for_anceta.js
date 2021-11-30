@@ -5,20 +5,23 @@ module.exports = (req,res)=>{
     let {surname,name,patronime} = req.body;
     findPerson(req.body).then(data=>{
         let {Position,Rank,Staff,institute,facultet,specialize,graduation} = data[0].dataValues;
-        //console.log({Position,Rank,Staff,institute,facultet,specialize,graduation});
         information_for_anceta(data[0].dataValues.id_user).then(async(data)=>{
-            console.log(typeof data);
-            if(data.dataValues){
+            if(data[0].dataValues){
                 let {id_anceta,id_user_whom_assessment} = data[0].dataValues;
                 let {statistic_quastion,statistic_competence} = await getStatistic(id_user_whom_assessment); 
                 let obj = format_all_tests(statistic_quastion,statistic_competence);
-                let {id_info,vidpovidnist,stagnenja,zaohochenja,year_point,nedolik,pobaganja,comander,comander_vch,comander_mpz,opinion} = data[0].dataValues.Info.dataValues
-                //console.log(`${id_info} ${vidpovidnist} ${stagnenja} ${zaohochenja} ${year_point} ${nedolik} ${pobaganja} ${comander} ${comander_vch} ${comander_mpz} ${opinion}`);
-                getResultComanderTest(id_info).then(dataCom =>{
-                    res.status(200).json({surname,name,patronime,vidpovidnist,stagnenja,zaohochenja,year_point,nedolik,pobaganja,comander,comander_vch,comander_mpz,opinion,dataCom,obj,Position,Rank,Staff,institute,facultet,specialize,graduation})
-                }).catch(e=>{
-                    throw Error(e)
-                });
+                if(obj){
+                    let {id_info,vidpovidnist,stagnenja,zaohochenja,year_point,nedolik,pobaganja,comander,comander_vch,comander_mpz,opinion} = data[0].dataValues.Info.dataValues
+                    //console.log(`${id_info} ${vidpovidnist} ${stagnenja} ${zaohochenja} ${year_point} ${nedolik} ${pobaganja} ${comander} ${comander_vch} ${comander_mpz} ${opinion}`);
+                    getResultComanderTest(id_info).then(dataCom =>{
+                        res.status(200).json({surname,name,patronime,vidpovidnist,stagnenja,zaohochenja,year_point,nedolik,pobaganja,comander,comander_vch,comander_mpz,opinion,dataCom,obj,Position,Rank,Staff,institute,facultet,specialize,graduation})
+                    }).catch(e=>{
+                        throw Error(e)
+                    });
+                }
+                else{
+                    res.sendStatus(400);
+                }
             }
             else{
                 res.sendStatus(400);
@@ -86,5 +89,11 @@ const format_all_tests = (statistic_quastion,statistic_competence)=>{
             console.log('unidentified type_anceta');
         }
     });
+    for(let property in obj){
+        if(obj[property].quastion.length == 0 || obj[property].competence.length == 0){
+            
+            return false
+        }
+    }
     return obj;
 }
