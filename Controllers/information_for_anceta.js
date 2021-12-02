@@ -91,7 +91,6 @@ const format_all_tests = (statistic_quastion,statistic_competence)=>{
     });
     for(let property in obj){
         if(obj[property].quastion.length == 0 || obj[property].competence.length == 0){
-            
             return false
         }
     }
